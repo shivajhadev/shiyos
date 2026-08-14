@@ -1,0 +1,69 @@
+{
+  "founder": {
+    "name": "Shivam Jha",
+    "role": "Founder & CEO",
+    "tagline": "Visionary behind Shiyos. 3+ years building brands, automating growth, and engineering results.",
+    "initials": "S",
+    "gradient": "linear-gradient(135deg, #F5B92E 0%, #e8a010 100%)",
+    "image": "/uploads/avatar_1786732979596_qaz0l.jpeg",
+    "experienceYears": "3+",
+    "brandsCount": "150+",
+    "teamSize": "15",
+    "storyTitle": "About Shiyos Technologies",
+    "storyParagraph1": "Shiyos Technologies was founded in 2021 with a single mission — to give growing brands access to the same level of strategic talent and technology that only large enterprises could afford.",
+    "storyParagraph2": "What started as a one-person operation quickly grew into a 15-member powerhouse serving 150+ brands across India and worldwide — spanning e-commerce, AI automation, performance marketing, influencer campaigns, web development, and browser extension tools.",
+    "storyParagraph3": "Every project at Shiyos is founder-led. Shiyo personally oversees strategy, quality, and outcomes — ensuring every client gets the same commitment as if it were our own brand on the line.",
+    "milestones": [
+      {
+        "year": "2021",
+        "event": "Shiyos founded — first e-commerce client onboarded"
+      },
+      {
+        "year": "2022",
+        "event": "Team grew to 5 — launched performance marketing & SEO"
+      },
+      {
+        "year": "2023",
+        "event": "Crossed 100 brands — added AI automation & influencer services"
+      },
+      {
+        "year": "2024",
+        "event": "15-member team — Chrome & Edge extension division launched"
+      }
+    ]
+  },
+  "members": [
+    {
+      "id": "m_1",
+      "name": "Sapna S.",
+      "role": "E-commerce Lead",
+      "initials": "RK",
+      "gradient": "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)",
+      "category": "E-commerce"
+    },
+    {
+      "id": "m_2",
+      "name": "Meesha S.",
+      "role": "Ecommerce Catalog Manager",
+      "initials": "PS",
+      "gradient": "linear-gradient(135deg, #0f3460 0%, #16213e 100%)",
+      "category": "Ecommerce "
+    },
+    {
+      "id": "m_3",
+      "name": "Shweta J.",
+      "role": "AI & Automation",
+      "initials": "AM",
+      "gradient": "linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%)",
+      "category": "AI & Tech"
+    },
+    {
+      "id": "m_4",
+      "name": "Sneha J.",
+      "role": "SEO Strategist",
+      "initials": "ST",
+      "gradient": "linear-gradient(135deg, #16213e 0%, #1a1a2e 100%)",
+      "category": "SEO"
+    }
+  ]
+}

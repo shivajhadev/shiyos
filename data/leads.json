@@ -1,0 +1,91 @@
+[
+  {
+    "id": "lead_1786733370947_zgjm9",
+    "full_name": "gfgfdg Jha",
+    "work_email": "shivamjha.loq@gmail.com",
+    "phone": "07986408226",
+    "main_need": "Influencer Marketing",
+    "message": "",
+    "source_page": "contact-page",
+    "status": "New",
+    "created_at": "2026-08-14T18:49:30.947Z",
+    "updated_at": "2026-08-14T18:49:30.947Z"
+  },
+  {
+    "id": "lead_1786731659293_0rq6d",
+    "full_name": "Shivam Jha",
+    "work_email": "shivamjha.loq@gmail.com",
+    "phone": "07986408226",
+    "main_need": "Personal Branding",
+    "message": "",
+    "source_page": "contact-page",
+    "status": "Converted",
+    "created_at": "2026-08-14T18:20:59.293Z",
+    "updated_at": "2026-08-14T18:21:59.944Z",
+    "notes": "ok deal with shivam"
+  },
+  {
+    "id": "lead_1786731344212_5bnro",
+    "full_name": "Test User",
+    "work_email": "test@brand.com",
+    "phone": "+91 99999 88888",
+    "main_need": "Website Design & Development",
+    "message": "Looking for an e-commerce website.",
+    "source_page": "Website Form",
+    "status": "Converted",
+    "created_at": "2026-08-14T18:15:44.212Z",
+    "updated_at": "2026-08-14T18:22:03.894Z"
+  },
+  {
+    "id": "lead_demo_1",
+    "full_name": "Aman Singhania",
+    "work_email": "aman@zencare.in",
+    "phone": "+91 98765 43210",
+    "main_need": "E-commerce Automation",
+    "message": "Looking to automate our Shopify and Amazon BuyBox repricing and order sync.",
+    "source_page": "Home Page",
+    "status": "New",
+    "notes": "High priority D2C brand",
+    "created_at": "2026-08-14T17:44:21.629Z",
+    "updated_at": "2026-08-14T17:44:21.629Z"
+  },
+  {
+    "id": "lead_demo_2",
+    "full_name": "Sarah Jenkins",
+    "work_email": "sarah@luminahealth.com",
+    "phone": "+1 415 890 1234",
+    "main_need": "Chrome & Edge Extension Development",
+    "message": "Need a custom browser extension to extract competitive product pricing in 1-click.",
+    "source_page": "Services / Extension",
+    "status": "Contacted",
+    "notes": "Sent introductory proposal on WhatsApp",
+    "created_at": "2026-08-14T14:14:21.629Z",
+    "updated_at": "2026-08-14T16:14:21.629Z"
+  },
+  {
+    "id": "lead_demo_3",
+    "full_name": "Rohan Varma",
+    "work_email": "rohan@urbankraft.co",
+    "phone": "+91 91234 56789",
+    "main_need": "Performance Marketing (Meta & Google)",
+    "message": "Current ROAS is 2.1x, looking to scale to 4x+ with paid ads.",
+    "source_page": "Audit Form",
+    "status": "Archived",
+    "notes": "Audit call scheduled for tomorrow 3 PM",
+    "created_at": "2026-08-13T18:14:21.629Z",
+    "updated_at": "2026-08-14T18:22:14.587Z"
+  },
+  {
+    "id": "lead_demo_4",
+    "full_name": "Vikram Malhotra",
+    "work_email": "vikram@malhotratex.com",
+    "phone": "+91 99887 76655",
+    "main_need": "Website Design & Development",
+    "message": "Need a complete rebrand and Next.js high performance website for our export business.",
+    "source_page": "Contact Page",
+    "status": "Archived",
+    "notes": "Proposal accepted, onboarding underway",
+    "created_at": "2026-08-12T18:14:21.629Z",
+    "updated_at": "2026-08-14T18:20:38.390Z"
+  }
+]

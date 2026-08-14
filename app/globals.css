@@ -1,26 +1,383 @@
 @import "tailwindcss";
 
+/* ─── Tailwind v4 Theme ─────────────────────────────────────── */
+@theme {
+  --font-display: "Syne", "Space Grotesk", sans-serif;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-serif: "Libre Caslon Text", Georgia, serif;
+
+  --color-amber: #f5b92e;
+  --color-amber-light: #ffd166;
+  --color-amber-dark: #e08c00;
+
+  /* Light mode */
+  --color-light-bg: #fafaf8;
+  --color-light-surface: #f4f4f2;
+  --color-light-card: #eeeeec;
+  --color-light-text: #111214;
+
+  /* Dark mode — pure black like DigiHandler */
+  --color-dark-bg: #0a0a0a;
+  --color-dark-surface: #111111;
+  --color-dark-card: #1a1a1a;
+  --color-dark-text: #f0f0f0;
+}
+
+/* ─── CSS Theme Tokens ──────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #fafaf8;
+  --bg-surface: #f4f4f2;
+  --bg-card: #eeeeec;
+  --bg-card-high: #e4e4e2;
+  --text-primary: #111214;
+  --text-muted: #4a4a4a;
+  --text-faint: #888888;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  --border-card: rgba(0, 0, 0, 0.10);
+  --accent: #f5b92e;
+  --accent-2: #ff8c00;
+  --accent-hover: #e08c00;
+  --accent-text: #111214;
+  --accent-gradient: linear-gradient(135deg, #f5b92e 0%, #ff8c00 60%, #ffb347 100%);
+  --accent-gradient-text: linear-gradient(135deg, #f5b92e 0%, #ffa500 100%);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-glow: 0 0 40px rgba(245,185,46,0.15);
+  --header-bg: rgba(250, 250, 248, 0.88);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── DARK MODE — Pure black like DigiHandler ───────────────── */
+.dark {
+  --bg: #0a0a0a;
+  --bg-surface: #0f0f0f;
+  --bg-card: #151515;
+  --bg-card-high: #1d1d1d;
+  --text-primary: #f0f0f0;
+  --text-muted: #999999;
+  --text-faint: #555555;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-card: rgba(255, 255, 255, 0.08);
+  --accent: #f5b92e;
+  --accent-2: #ff8c00;
+  --accent-hover: #ffd166;
+  --accent-text: #0a0a0a;
+  --accent-gradient: linear-gradient(135deg, #f5b92e 0%, #ff8c00 60%, #ffb347 100%);
+  --accent-gradient-text: linear-gradient(135deg, #f5b92e 0%, #ffa500 100%);
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.04), 0 2px 12px rgba(0,0,0,0.4);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 60px rgba(245,185,46,0.12);
+  --header-bg: rgba(10, 10, 10, 0.85);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 250ms ease, color 250ms ease;
 }
+
+/* Display headings use Syne for that DigiHandler bold punch */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Syne", "Space Grotesk", sans-serif;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Container ─────────────────────────────────────────────── */
+.container-custom {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 640px) {
+  .container-custom {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* ─── Gradient accent text (the golden gradient) ────────────── */
+.text-accent {
+  color: var(--accent);
+}
+
+.gradient-text {
+  background: var(--accent-gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--accent-gradient);
+  color: #111214;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+  box-shadow: 0 0 0 rgba(245,185,46,0);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(245, 185, 46, 0.35), 0 4px 16px rgba(0,0,0,0.2);
+  opacity: 0.92;
+}
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 150ms ease, background-color 150ms ease, transform 150ms ease;
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  background-color: rgba(245, 185, 46, 0.06);
+  transform: translateY(-1px);
+}
+.btn-secondary:active { transform: scale(0.97); }
+
+/* ─── Cards with Golden Line Hover Effect ───────────────────── */
+.card, .gold-card, .process-card {
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+/* Glowing golden line on card hover */
+.card::after, .gold-card::after, .process-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #ffffff 25%, #f5b92e 50%, #ff8c00 75%, transparent 100%);
+  border-radius: 9999px;
+  opacity: 0;
+  transform: scaleX(0.3);
+  transition: opacity 320ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1), left 320ms ease, right 320ms ease, box-shadow 320ms ease;
+  box-shadow: 0 0 14px 2px rgba(245, 185, 46, 0.85), 0 0 28px 4px rgba(245, 185, 46, 0.4);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.card:hover::after, .gold-card:hover::after, .process-card:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+  left: 4%;
+  right: 4%;
+}
+
+.card:hover, .gold-card:hover, .process-card:hover {
+  border-color: rgba(245, 185, 46, 0.35);
+  box-shadow: var(--shadow-hover), 0 0 35px rgba(245, 185, 46, 0.12);
+  transform: translateY(-4px);
+}
+
+/* ─── Section label / Badge Pill ────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-strong);
+  border-radius: 9999px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary); /* White in dark mode (#f0f0f0), Black in light mode (#111214) */
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  transition: color 250ms ease, background-color 250ms ease, border-color 250ms ease;
+}
+
+:root:not(.dark) .section-label {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.16);
+  color: #111214;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* ─── Marquee ───────────────────────────────────────────────── */
+.marquee-container { overflow: hidden; white-space: nowrap; }
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Form inputs ───────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.form-input::placeholder { color: var(--text-faint); }
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245, 185, 46, 0.12);
+}
+.form-input.error { border-color: #ef4444; }
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.form-error { font-size: 12px; color: #ef4444; margin-top: 4px; }
+
+/* ─── Timeline ──────────────────────────────────────────────── */
+.timeline-dot-active {
+  width: 12px; height: 12px;
+  border-radius: 9999px;
+  background: var(--accent-gradient);
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(245,185,46,0.4);
+}
+.timeline-dot-inactive {
+  width: 12px; height: 12px;
+  border-radius: 9999px;
+  border: 2px solid var(--border-strong);
+  flex-shrink: 0;
+}
+
+/* ─── WhatsApp button ───────────────────────────────────────── */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 9999px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+}
+
+/* ─── Background sparkle decorations (DigiHandler stars) ────── */
+.sparkle {
+  position: absolute;
+  color: var(--accent);
+  pointer-events: none;
+  animation: sparkle-pulse 4s ease-in-out infinite;
+}
+.sparkle-sm { font-size: 14px; }
+.sparkle-md { font-size: 22px; }
+.sparkle-lg { font-size: 30px; }
+
+@keyframes sparkle-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.8; transform: scale(1.15) rotate(15deg); }
+}
+
+/* ─── Noise texture overlay (DigiHandler vibe) ──────────────── */
+.dark body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Dot grid pattern (right side like DigiHandler) ────────── */
+.dot-grid {
+  position: absolute;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+/* ─── Reduced motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-track { animation: none; }
+}
+
+/* ─── Selection / Scrollbar ─────────────────────────────────── */
+::selection { background: rgba(245, 185, 46, 0.2); }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-surface); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
