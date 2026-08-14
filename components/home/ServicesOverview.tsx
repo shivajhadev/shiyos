@@ -38,7 +38,7 @@ export default function ServicesOverview() {
             style={{
               fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
-              fontSize: "clamp(36px, 4.5vw, 60px)",
+              fontSize: "clamp(32px, 4.5vw, 60px)",
               lineHeight: "1.1",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
@@ -75,20 +75,21 @@ export default function ServicesOverview() {
               >
                 <button
                   onClick={() => setOpenCategory(isOpen ? null : cat.slug)}
+                  className="services-tax-btn"
                   style={{
                     width: "100%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    padding: "24px 32px",
+                    padding: "20px 24px",
                     background: "none",
                     border: "none",
                     cursor: "pointer",
                     textAlign: "left",
-                    gap: "16px",
+                    gap: "12px",
                   }}
                 >
-                  <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "14px", minWidth: 0, flex: 1 }}>
                     <div
                       style={{
                         width: "36px",
@@ -104,39 +105,48 @@ export default function ServicesOverview() {
                     >
                       <Sparkles size={18} />
                     </div>
-                    <div>
+                    <div style={{ minWidth: 0, flex: 1 }}>
                       <div
                         style={{
                           fontFamily: '"Syne", sans-serif',
                           fontWeight: 800,
-                          fontSize: "20px",
+                          fontSize: "clamp(16px, 3.8vw, 20px)",
                           color: "var(--text-primary)",
-                          marginBottom: "4px",
+                          marginBottom: "2px",
                           letterSpacing: "-0.01em",
+                          lineHeight: "1.25",
                         }}
                       >
                         {cat.name}
                       </div>
-                      <div style={{ fontSize: "14px", color: "var(--text-muted)", fontFamily: '"Space Grotesk", sans-serif' }}>
+                      <div
+                        style={{
+                          fontSize: "13px",
+                          color: "var(--text-muted)",
+                          fontFamily: '"Space Grotesk", sans-serif',
+                          lineHeight: "1.4",
+                        }}
+                      >
                         {cat.description}
                       </div>
                     </div>
                   </div>
 
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
                     <span
+                      className="hidden sm:inline-block"
                       style={{
                         fontSize: "11px",
                         fontWeight: 700,
                         color: "var(--text-faint)",
                         background: "rgba(255,255,255,0.04)",
-                        padding: "5px 12px",
+                        padding: "4px 10px",
                         borderRadius: "9999px",
                         border: "1px solid var(--border-card)",
                         textTransform: "uppercase",
                       }}
                     >
-                      {cat.services.length} services
+                      {cat.services.length}
                     </span>
                     <ChevronDown
                       size={18}
@@ -152,15 +162,15 @@ export default function ServicesOverview() {
                 {isOpen && (
                   <div
                     style={{
-                      padding: "0 32px 28px",
+                      padding: "0 24px 24px",
                       borderTop: "1px solid var(--border-card)",
-                      paddingTop: "24px",
+                      paddingTop: "20px",
                     }}
                   >
                     <div
                       style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+                        gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
                         gap: "10px",
                       }}
                     >
@@ -173,10 +183,10 @@ export default function ServicesOverview() {
                             alignItems: "center",
                             justifyContent: "space-between",
                             gap: "8px",
-                            padding: "12px 16px",
+                            padding: "12px 14px",
                             borderRadius: "10px",
                             border: "1px solid var(--border-card)",
-                            fontSize: "14px",
+                            fontSize: "13px",
                             fontWeight: 600,
                             color: "var(--text-primary)",
                             textDecoration: "none",
