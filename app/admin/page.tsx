@@ -40,6 +40,7 @@ const STATUS_COLORS: Record<string, { bg: string; text: string; border: string }
 
 export default function AdminDashboardPage() {
   const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [activeTab, setActiveTab] = useState<"leads" | "team">("leads");
 
   // Leads State
@@ -84,15 +85,19 @@ export default function AdminDashboardPage() {
     try {
       const res = await fetch("/api/admin/leads");
       if (res.status === 401) {
-        router.push("/admin/login");
+        setIsAuthenticated(false);
+        router.replace("/admin/login");
         return;
       }
       const data = await res.json();
       if (data.leads) {
         setLeads(data.leads);
+        setIsAuthenticated(true);
       }
     } catch {
       showToast("Failed to fetch leads.");
+      setIsAuthenticated(false);
+      router.replace("/admin/login");
     } finally {
       setLoading(false);
     }
@@ -365,6 +370,44 @@ export default function AdminDashboardPage() {
       setPwdLoading(false);
     }
   };
+
+  // Auth gate — Never render dashboard if unauthenticated
+  if (isAuthenticated !== true) {
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          background: "var(--bg)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: "16px",
+        }}
+      >
+        <div
+          style={{
+            width: "44px",
+            height: "44px",
+            borderRadius: "12px",
+            background: "var(--accent-gradient)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontWeight: 800,
+            fontSize: "22px",
+            color: "#0a0a0a",
+            boxShadow: "0 0 24px rgba(245,185,46,0.3)",
+          }}
+        >
+          S
+        </div>
+        <div style={{ color: "var(--text-muted)", fontSize: "14px", fontWeight: 600 }}>
+          Authenticating admin access…
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ minHeight: "100vh", background: "var(--bg)", color: "var(--text-primary)" }}>
