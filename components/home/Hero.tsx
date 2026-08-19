@@ -25,10 +25,7 @@ export default function Hero() {
   return (
     <section
       style={{
-        minHeight: "90vh",
-        display: "flex",
-        alignItems: "center",
-        paddingTop: "110px",
+        paddingTop: "120px",
         paddingBottom: "48px",
         position: "relative",
         overflow: "hidden",
