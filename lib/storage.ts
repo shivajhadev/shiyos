@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import os from "os";
 import crypto from "crypto";
 
 export interface Lead {
@@ -23,14 +24,26 @@ export interface AdminConfig {
   lastPasswordChange: string;
 }
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const LEADS_FILE = path.join(DATA_DIR, "leads.json");
-const ADMIN_FILE = path.join(DATA_DIR, "admin-config.json");
-
-// Ensure data directory exists
-function ensureDataDir() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+function getWritableFilePath(filename: string): string {
+  try {
+    const localDir = path.join(process.cwd(), "data");
+    if (!fs.existsSync(localDir)) {
+      fs.mkdirSync(localDir, { recursive: true });
+    }
+    const testFile = path.join(localDir, ".test-write");
+    fs.writeFileSync(testFile, "1");
+    fs.unlinkSync(testFile);
+    return path.join(localDir, filename);
+  } catch {
+    const tmpDir = path.join(os.tmpdir(), "shiyos-data");
+    if (!fs.existsSync(tmpDir)) {
+      try {
+        fs.mkdirSync(tmpDir, { recursive: true });
+      } catch {
+        // ignore
+      }
+    }
+    return path.join(tmpDir, filename);
   }
 }
 
@@ -99,91 +112,110 @@ const initialDemoLeads: Lead[] = [
     notes: "Proposal accepted, onboarding underway",
     created_at: new Date(Date.now() - 1000 * 60 * 60 * 48).toISOString(),
     updated_at: new Date(Date.now() - 1000 * 60 * 60 * 20).toISOString(),
-  }
+  },
 ];
+
+let inMemoryLeads: Lead[] = JSON.parse(JSON.stringify(initialDemoLeads));
+
+const defaultHash = hashPassword("$hivaJha2003@Jha");
+let inMemoryConfig: AdminConfig = {
+  username: "admin.shiyos@gmail.com",
+  passwordHash: defaultHash.hash,
+  salt: defaultHash.salt,
+  lastPasswordChange: new Date().toISOString(),
+};
 
 // Admin configuration
 export function getAdminConfig(): AdminConfig {
-  ensureDataDir();
-  if (!fs.existsSync(ADMIN_FILE)) {
-    // Default credentials: admin.shiyos@gmail.com
-    const { hash, salt } = hashPassword("$hivaJha2003@Jha");
-    const defaultConfig: AdminConfig = {
-      username: "admin.shiyos@gmail.com",
-      passwordHash: hash,
-      salt: salt,
-      lastPasswordChange: new Date().toISOString(),
-    };
-    fs.writeFileSync(ADMIN_FILE, JSON.stringify(defaultConfig, null, 2), "utf-8");
-    return defaultConfig;
+  const filePath = getWritableFilePath("admin-config.json");
+  try {
+    if (fs.existsSync(filePath)) {
+      const raw = fs.readFileSync(filePath, "utf-8");
+      inMemoryConfig = JSON.parse(raw);
+      return inMemoryConfig;
+    }
+  } catch (err) {
+    console.error("Error reading admin-config, using in-memory:", err);
   }
 
   try {
-    const raw = fs.readFileSync(ADMIN_FILE, "utf-8");
-    return JSON.parse(raw);
+    fs.writeFileSync(filePath, JSON.stringify(inMemoryConfig, null, 2), "utf-8");
   } catch {
-    const { hash, salt } = hashPassword("shiyos@admin123");
-    const fallback: AdminConfig = {
-      username: "admin",
-      passwordHash: hash,
-      salt: salt,
-      lastPasswordChange: new Date().toISOString(),
-    };
-    return fallback;
+    // Ignore read-only errors
   }
+  return inMemoryConfig;
 }
 
 export function updateAdminPassword(newPassword: string, newUsername?: string): boolean {
-  ensureDataDir();
   const current = getAdminConfig();
   const { hash, salt } = hashPassword(newPassword);
-  const updated: AdminConfig = {
+  inMemoryConfig = {
     username: newUsername?.trim() || current.username,
     passwordHash: hash,
     salt: salt,
     lastPasswordChange: new Date().toISOString(),
   };
-  fs.writeFileSync(ADMIN_FILE, JSON.stringify(updated, null, 2), "utf-8");
+
+  try {
+    const filePath = getWritableFilePath("admin-config.json");
+    fs.writeFileSync(filePath, JSON.stringify(inMemoryConfig, null, 2), "utf-8");
+  } catch (err) {
+    console.error("Error writing admin-config, retained in-memory:", err);
+  }
   return true;
 }
 
 // Leads Store
 export function getLeads(): Lead[] {
-  ensureDataDir();
-  if (!fs.existsSync(LEADS_FILE)) {
-    fs.writeFileSync(LEADS_FILE, JSON.stringify(initialDemoLeads, null, 2), "utf-8");
-    return initialDemoLeads;
+  const filePath = getWritableFilePath("leads.json");
+  try {
+    if (fs.existsSync(filePath)) {
+      const raw = fs.readFileSync(filePath, "utf-8");
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        inMemoryLeads = parsed;
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.error("Error reading leads, using in-memory:", err);
   }
 
   try {
-    const raw = fs.readFileSync(LEADS_FILE, "utf-8");
-    const data = JSON.parse(raw);
-    return Array.isArray(data) ? data : [];
-  } catch (err) {
-    console.error("Error reading leads file:", err);
-    return [];
+    fs.writeFileSync(filePath, JSON.stringify(inMemoryLeads, null, 2), "utf-8");
+  } catch {
+    // ignore
   }
+  return inMemoryLeads;
 }
 
-export function addLead(leadData: Omit<Lead, "id" | "created_at" | "updated_at" | "status">): Lead {
-  ensureDataDir();
+export function saveLead(
+  leadData: Omit<Lead, "id" | "created_at" | "updated_at" | "status"> & { status?: Lead["status"] }
+): Lead {
   const leads = getLeads();
   const now = new Date().toISOString();
   const newLead: Lead = {
     id: `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+    status: leadData.status || "New",
     ...leadData,
-    status: "New",
     created_at: now,
     updated_at: now,
   };
-
   leads.unshift(newLead);
-  fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+  inMemoryLeads = leads;
+
+  try {
+    const filePath = getWritableFilePath("leads.json");
+    fs.writeFileSync(filePath, JSON.stringify(leads, null, 2), "utf-8");
+  } catch (err) {
+    console.error("Error writing leads.json, retained in-memory:", err);
+  }
   return newLead;
 }
 
+export const addLead = saveLead;
+
 export function updateLead(id: string, updates: Partial<Lead>): Lead | null {
-  ensureDataDir();
   const leads = getLeads();
   const index = leads.findIndex((l) => l.id === id);
   if (index === -1) return null;
@@ -193,18 +225,29 @@ export function updateLead(id: string, updates: Partial<Lead>): Lead | null {
     ...updates,
     updated_at: new Date().toISOString(),
   };
+  inMemoryLeads = leads;
 
-  fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+  try {
+    const filePath = getWritableFilePath("leads.json");
+    fs.writeFileSync(filePath, JSON.stringify(leads, null, 2), "utf-8");
+  } catch (err) {
+    console.error("Error updating leads.json, retained in-memory:", err);
+  }
   return leads[index];
 }
 
 export function deleteLead(id: string): boolean {
-  ensureDataDir();
   const leads = getLeads();
   const filtered = leads.filter((l) => l.id !== id);
   if (filtered.length === leads.length) return false;
 
-  fs.writeFileSync(LEADS_FILE, JSON.stringify(filtered, null, 2), "utf-8");
+  inMemoryLeads = filtered;
+  try {
+    const filePath = getWritableFilePath("leads.json");
+    fs.writeFileSync(filePath, JSON.stringify(filtered, null, 2), "utf-8");
+  } catch (err) {
+    console.error("Error deleting lead, retained in-memory:", err);
+  }
   return true;
 }
 

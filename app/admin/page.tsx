@@ -58,6 +58,8 @@ export default function AdminDashboardPage() {
   const [editMemberModalOpen, setEditMemberModalOpen] = useState(false);
   const [editingMember, setEditingMember] = useState<Partial<TeamMember> | null>(null);
   const [uploadingImg, setUploadingImg] = useState(false);
+  const [savingMember, setSavingMember] = useState(false);
+  const [savingFounder, setSavingFounder] = useState(false);
 
   // Change Password Modal State
   const [passwordModalOpen, setPasswordModalOpen] = useState(false);
@@ -249,6 +251,7 @@ export default function AdminDashboardPage() {
     e.preventDefault();
     if (!founder) return;
 
+    setSavingFounder(true);
     try {
       const res = await fetch("/api/admin/team/founder", {
         method: "PUT",
@@ -258,10 +261,13 @@ export default function AdminDashboardPage() {
       if (res.ok) {
         showToast("Founder profile updated successfully!");
       } else {
-        showToast("Failed to update founder profile.");
+        const err = await res.json().catch(() => ({}));
+        showToast(err.error || `Failed to update founder profile (${res.status}).`);
       }
     } catch {
       showToast("Error updating founder profile.");
+    } finally {
+      setSavingFounder(false);
     }
   };
 
@@ -273,6 +279,7 @@ export default function AdminDashboardPage() {
       return;
     }
 
+    setSavingMember(true);
     try {
       if (editingMember.id) {
         // Edit
@@ -286,6 +293,9 @@ export default function AdminDashboardPage() {
           setTeamMembers((prev) => prev.map((m) => (m.id === editingMember.id ? data.member : m)));
           showToast("Team member updated!");
           setEditMemberModalOpen(false);
+        } else {
+          const err = await res.json().catch(() => ({}));
+          showToast(err.error || `Failed to update member (${res.status}).`);
         }
       } else {
         // Add new
@@ -299,10 +309,15 @@ export default function AdminDashboardPage() {
           setTeamMembers((prev) => [...prev, data.member]);
           showToast("New team member added!");
           setEditMemberModalOpen(false);
+        } else {
+          const err = await res.json().catch(() => ({}));
+          showToast(err.error || `Failed to add member (${res.status}).`);
         }
       }
     } catch {
       showToast("Failed to save team member.");
+    } finally {
+      setSavingMember(false);
     }
   };
 
@@ -1436,8 +1451,17 @@ export default function AdminDashboardPage() {
                 >
                   Cancel
                 </button>
-                <button type="submit" className="btn-primary" style={{ padding: "10px 24px" }}>
-                  {editingMember.id ? "Save Changes" : "Add Member"}
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  disabled={savingMember}
+                  style={{
+                    padding: "10px 24px",
+                    opacity: savingMember ? 0.7 : 1,
+                    cursor: savingMember ? "not-allowed" : "pointer",
+                  }}
+                >
+                  {savingMember ? "Saving…" : editingMember.id ? "Save Changes" : "Add Member"}
                 </button>
               </div>
             </form>

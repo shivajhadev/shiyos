@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import os from "os";
 
 export interface TeamMember {
   id: string;
@@ -34,29 +35,26 @@ export interface TeamStoreData {
   members: TeamMember[];
 }
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const TEAM_FILE = path.join(DATA_DIR, "team.json");
-
 const defaultTeamData: TeamStoreData = {
   founder: {
-    name: "Shiyo",
+    name: "Shiva Jha",
     role: "Founder & CEO",
-    tagline: "Visionary behind Shiyos. 3+ years building brands, automating growth, and engineering results.",
-    initials: "S",
+    tagline: "Visionary behind Shiyos. 2+ years building brands, automating growth, and engineering results.",
+    initials: "SJ",
     gradient: "linear-gradient(135deg, #F5B92E 0%, #e8a010 100%)",
     image: "",
-    experienceYears: "3+",
+    experienceYears: "2+",
     brandsCount: "150+",
-    teamSize: "15",
+    teamSize: "15+",
     storyTitle: "About Shiyos Technologies",
-    storyParagraph1: "Shiyos Technologies was founded in 2021 with a single mission — to give growing brands access to the same level of strategic talent and technology that only large enterprises could afford.",
-    storyParagraph2: "What started as a one-person operation quickly grew into a 15-member powerhouse serving 150+ brands across India and worldwide — spanning e-commerce, AI automation, performance marketing, influencer campaigns, web development, and browser extension tools.",
-    storyParagraph3: "Every project at Shiyos is founder-led. Shiyo personally oversees strategy, quality, and outcomes — ensuring every client gets the same commitment as if it were our own brand on the line.",
+    storyParagraph1: "Shiyos Technologies was founded with a single mission — to give growing brands access to the same level of strategic talent, custom engineering, and performance automation that only large enterprises could afford.",
+    storyParagraph2: "What started as a focused operation quickly grew into a 15+ member powerhouse serving 150+ brands across India and worldwide — spanning e-commerce, AI automation, performance marketing, influencer campaigns, web development, and browser extension tools.",
+    storyParagraph3: "Every project at Shiyos is founder-led. Shiva personally oversees strategy, quality, and outcomes — ensuring every client gets the same commitment as if it were our own brand on the line.",
     milestones: [
-      { year: "2021", event: "Shiyos founded — first e-commerce client onboarded" },
-      { year: "2022", event: "Team grew to 5 — launched performance marketing & SEO" },
-      { year: "2023", event: "Crossed 100 brands — added AI automation & influencer services" },
-      { year: "2024", event: "15-member team — Chrome & Edge extension division launched" },
+      { year: "2024", event: "Shiyos founded — first 25 e-commerce & technology clients onboarded" },
+      { year: "2024", event: "Team grew to 8 — launched performance marketing & Advance AI automation" },
+      { year: "2025", event: "Crossed 100+ projects — added AI UGC video ads & influencer pipelines" },
+      { year: "2026", event: "15+ specialist team — full-stack digital growth & software engineering studio" },
     ],
   },
   members: [
@@ -77,31 +75,62 @@ const defaultTeamData: TeamStoreData = {
   ],
 };
 
-function ensureDataDir() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+// Global in-memory cache for ultra-fast response and serverless fallback
+let inMemoryTeamData: TeamStoreData = JSON.parse(JSON.stringify(defaultTeamData));
+
+function getWritableFilePath(): string {
+  try {
+    const localDir = path.join(process.cwd(), "data");
+    if (!fs.existsSync(localDir)) {
+      fs.mkdirSync(localDir, { recursive: true });
+    }
+    const testPath = path.join(localDir, ".test-write");
+    fs.writeFileSync(testPath, "1");
+    fs.unlinkSync(testPath);
+    return path.join(localDir, "team.json");
+  } catch {
+    const tmpDir = path.join(os.tmpdir(), "shiyos-data");
+    if (!fs.existsSync(tmpDir)) {
+      try {
+        fs.mkdirSync(tmpDir, { recursive: true });
+      } catch {
+        // ignore
+      }
+    }
+    return path.join(tmpDir, "team.json");
   }
 }
 
 export function getTeamData(): TeamStoreData {
-  ensureDataDir();
-  if (!fs.existsSync(TEAM_FILE)) {
-    fs.writeFileSync(TEAM_FILE, JSON.stringify(defaultTeamData, null, 2), "utf-8");
-    return defaultTeamData;
+  const filePath = getWritableFilePath();
+  try {
+    if (fs.existsSync(filePath)) {
+      const raw = fs.readFileSync(filePath, "utf-8");
+      const parsed = JSON.parse(raw);
+      inMemoryTeamData = parsed;
+      return parsed;
+    }
+  } catch (err) {
+    console.error("Error reading team data from disk, using in-memory cache:", err);
   }
 
+  // If not on disk yet, try to save default
   try {
-    const raw = fs.readFileSync(TEAM_FILE, "utf-8");
-    return JSON.parse(raw);
-  } catch (err) {
-    console.error("Error reading team.json:", err);
-    return defaultTeamData;
+    fs.writeFileSync(filePath, JSON.stringify(inMemoryTeamData, null, 2), "utf-8");
+  } catch {
+    // Ignore read-only errors
   }
+  return inMemoryTeamData;
 }
 
 export function saveTeamData(data: TeamStoreData): void {
-  ensureDataDir();
-  fs.writeFileSync(TEAM_FILE, JSON.stringify(data, null, 2), "utf-8");
+  inMemoryTeamData = data;
+  try {
+    const filePath = getWritableFilePath();
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+  } catch (err) {
+    console.error("Error writing team.json, retained in-memory:", err);
+  }
 }
 
 export function updateFounderData(founderUpdates: Partial<FounderData>): FounderData {
@@ -116,7 +145,16 @@ export function updateFounderData(founderUpdates: Partial<FounderData>): Founder
 
 export function addTeamMember(member: Omit<TeamMember, "id">): TeamMember {
   const data = getTeamData();
-  const initials = member.initials?.trim() || member.name.split(" ").map(w => w[0]).join("").substring(0, 2).toUpperCase() || "TM";
+  const initials =
+    member.initials?.trim() ||
+    member.name
+      .split(" ")
+      .map((w) => w[0])
+      .join("")
+      .substring(0, 2)
+      .toUpperCase() ||
+    "TM";
+
   const newMember: TeamMember = {
     id: `m_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
     ...member,
@@ -134,7 +172,12 @@ export function updateTeamMember(id: string, updates: Partial<TeamMember>): Team
   if (index === -1) return null;
 
   if (updates.name && !updates.initials) {
-    updates.initials = updates.name.split(" ").map(w => w[0]).join("").substring(0, 2).toUpperCase();
+    updates.initials = updates.name
+      .split(" ")
+      .map((w) => w[0])
+      .join("")
+      .substring(0, 2)
+      .toUpperCase();
   }
 
   data.members[index] = {
