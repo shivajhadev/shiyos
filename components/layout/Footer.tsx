@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { serviceCategories } from "@/lib/services-data";
 import { Sparkles, Phone, Mail, MessageCircle } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -14,6 +15,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const topServices = [
+    { name: "AI UGC Video Ads", slug: "ai-ugc-video-ads" },
     { name: "E-commerce Automation", slug: "ecommerce-automation" },
     { name: "AI Automation & Intelligence", slug: "ai-automation" },
     { name: "AI-Assisted SEO", slug: "ai-assisted-seo" },
@@ -64,7 +66,6 @@ export default function Footer() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
                   fontSize: "17px",
                   color: "#0a0a0a",
@@ -75,11 +76,11 @@ export default function Footer() {
               </div>
               <span
                 style={{
-                  fontFamily: '"Syne", sans-serif',
+                  fontFamily: '"Plus Jakarta Sans", sans-serif',
                   fontWeight: 800,
                   fontSize: "20px",
                   color: "var(--text-primary)",
-                  letterSpacing: "0.04em",
+                  letterSpacing: "-0.03em",
                   textTransform: "uppercase",
                 }}
               >
@@ -93,12 +94,10 @@ export default function Footer() {
                 color: "var(--text-muted)",
                 lineHeight: "1.7",
                 marginBottom: "24px",
-                maxWidth: "280px",
-                fontFamily: '"Space Grotesk", sans-serif',
+                maxWidth: "290px",
               }}
             >
-              Full-service IT, e-commerce growth, and digital marketing studio.
-              Founder-led, results-driven.
+              AI • Software • Automation • Growth. Full-service IT, AI automation, custom software, and performance marketing. Founder-led, results-driven.
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "28px", fontSize: "13px" }}>
@@ -207,7 +206,6 @@ export default function Footer() {
                     color: "var(--text-muted)",
                     textDecoration: "none",
                     transition: "color 150ms, transform 150ms",
-                    fontFamily: '"Space Grotesk", sans-serif',
                   }}
                   onMouseEnter={e => {
                     (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-primary)";
@@ -229,9 +227,13 @@ export default function Footer() {
                   color: "var(--accent)",
                   textDecoration: "none",
                   marginTop: "6px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
                 }}
               >
-                All 30+ services →
+                <span>All 30+ services</span>
+                <ArrowIcon size={13} />
               </Link>
             </nav>
           </div>
@@ -279,7 +281,6 @@ export default function Footer() {
                 { href: "/work", label: "Selected Work" },
                 { href: "/journal", label: "Journal & Insights" },
                 { href: "/contact", label: "Get a Free Audit" },
-                { href: "/admin", label: "Admin Console 🔒" },
                 { href: "https://wa.me/917986408226", label: "Direct WhatsApp" },
               ].map(({ href, label }) => (
                 <Link

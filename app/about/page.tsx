@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 import { Check } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -35,10 +36,9 @@ export default function AboutPage() {
           </span>
           <h1
             style={{
-              fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
-              fontSize: "clamp(40px, 5.5vw, 68px)",
-              lineHeight: "1.05",
+              fontSize: "clamp(38px, 5.2vw, 64px)",
+              lineHeight: "1.1",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
               marginBottom: "24px",
@@ -54,7 +54,6 @@ export default function AboutPage() {
               color: "var(--text-muted)",
               maxWidth: "640px",
               lineHeight: "1.65",
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             Shiyos Technologies is a full-service IT, e-commerce growth, and digital marketing studio.
@@ -78,7 +77,6 @@ export default function AboutPage() {
             <div>
               <h2
                 style={{
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
                   fontSize: "36px",
                   color: "var(--text-primary)",
@@ -99,32 +97,32 @@ export default function AboutPage() {
                 }}
               >
                 <p>
-                  Most traditional agencies are designed for scale at the expense of quality. The senior person who pitches you the strategy is rarely the person executing your campaigns or writing your code.
+                  Most growing brands end up with four different freelancers who don't talk to each other — a media buyer blaming the creative, an editor blaming the script, and a developer who doesn't understand conversion rates.
                 </p>
                 <p>
-                  Shiyos exists to eliminate that breakdown. Founded by Shiva, we operate on a simple principle: the founders stay on the account. Strategy, execution, and performance reporting are held to the same unyielding standard.
+                  Shiyos was founded on a simple premise: growth works when strategy, creative, performance marketing, and engineering are connected under one roof with direct founder accountability.
                 </p>
                 <p>
-                  We have built a dedicated in-house team of 15+ specialists across e-commerce automation, media buying, full-stack development, and SEO — large enough to execute complete multi-channel roadmaps, small enough that the founders are actively involved in every weekly sprint.
+                  We don't sell hours or vanity metrics. Every engagement is judged on revenue, ROAS, and compounding business value.
                 </p>
               </div>
             </div>
 
             <div>
-              {/* Stats Grid */}
+              {/* Studio Numbers Grid */}
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
+                  gridTemplateColumns: "repeat(2, 1fr)",
                   gap: "16px",
                   marginBottom: "32px",
                 }}
               >
                 {[
-                  { value: "150+", label: "Brands served worldwide" },
-                  { value: "3+ yrs", label: "In continuous operation" },
-                  { value: "15+", label: "In-house specialists" },
-                  { value: "7", label: "Core growth disciplines" },
+                  { value: "150+", label: "Brands Served" },
+                  { value: "3+ yrs", label: "Studio History" },
+                  { value: "15+", label: "Specialists" },
+                  { value: "4.8x", label: "Average Ad ROAS" },
                 ].map(({ value, label }) => (
                   <div
                     key={label}
@@ -137,11 +135,11 @@ export default function AboutPage() {
                   >
                     <div
                       style={{
-                        fontFamily: '"Syne", sans-serif',
                         fontWeight: 800,
                         fontSize: "32px",
                         color: "var(--accent)",
                         marginBottom: "6px",
+                        letterSpacing: "-0.02em",
                       }}
                     >
                       {value}
@@ -162,11 +160,11 @@ export default function AboutPage() {
               >
                 <h3
                   style={{
-                    fontFamily: '"Syne", sans-serif',
                     fontWeight: 800,
                     fontSize: "20px",
                     color: "var(--text-primary)",
                     marginBottom: "20px",
+                    letterSpacing: "-0.02em",
                   }}
                 >
                   Our operating commitments
@@ -216,7 +214,6 @@ export default function AboutPage() {
               style={{
                 fontSize: "48px",
                 color: "var(--accent)",
-                fontFamily: '"Syne", sans-serif',
                 lineHeight: "1",
                 marginBottom: "16px",
               }}
@@ -228,8 +225,8 @@ export default function AboutPage() {
                 fontSize: "20px",
                 color: "var(--text-primary)",
                 lineHeight: "1.6",
-                fontFamily: '"Syne", sans-serif',
                 fontWeight: 700,
+                letterSpacing: "-0.02em",
                 marginBottom: "28px",
               }}
             >
@@ -245,7 +242,6 @@ export default function AboutPage() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
                   fontSize: "22px",
                   color: "#0a0a0a",
@@ -254,7 +250,7 @@ export default function AboutPage() {
                 S
               </div>
               <div>
-                <div style={{ fontWeight: 800, color: "var(--text-primary)", fontSize: "16px", fontFamily: '"Syne", sans-serif' }}>
+                <div style={{ fontWeight: 800, color: "var(--text-primary)", fontSize: "16px" }}>
                   Shiva
                 </div>
                 <div style={{ fontSize: "13px", color: "var(--text-muted)" }}>
@@ -265,8 +261,9 @@ export default function AboutPage() {
           </div>
 
           <div style={{ marginTop: "48px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
-            <Link href="/contact" className="btn-primary">
-              Start a Project →
+            <Link href="/contact" className="btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <span>Start a Project</span>
+              <ArrowIcon size={14} />
             </Link>
             <Link href="/services" className="btn-secondary">
               See All Services

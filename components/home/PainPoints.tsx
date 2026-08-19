@@ -71,10 +71,9 @@ export default function PainPoints() {
 
         <h2
           style={{
-            fontFamily: '"Syne", sans-serif',
             fontWeight: 800,
-            fontSize: "clamp(32px, 4vw, 52px)",
-            lineHeight: "1.1",
+            fontSize: "clamp(32px, 4vw, 50px)",
+            lineHeight: "1.12",
             letterSpacing: "-0.03em",
             color: "var(--text-primary)",
             marginBottom: "36px",
@@ -111,13 +110,12 @@ export default function PainPoints() {
               <div>
                 <p
                   style={{
-                    fontFamily: '"Syne", sans-serif',
                     fontWeight: 700,
-                    fontSize: "20px",
+                    fontSize: "19px",
                     color: "var(--text-primary)",
                     lineHeight: "1.35",
                     marginBottom: "14px",
-                    letterSpacing: "-0.01em",
+                    letterSpacing: "-0.02em",
                   }}
                 >
                   {point.pain}
@@ -128,7 +126,6 @@ export default function PainPoints() {
                     color: "var(--text-muted)",
                     lineHeight: "1.65",
                     marginBottom: "24px",
-                    fontFamily: '"Space Grotesk", sans-serif',
                   }}
                 >
                   {point.fix}

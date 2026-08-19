@@ -1,26 +1,76 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { flagshipServices } from "@/lib/services-data";
-import { ChevronDown } from "lucide-react";
+import { Code, Cpu, TrendingUp, Sparkles } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
+
+interface Pillar {
+  id: string;
+  number: string;
+  title: string;
+  tagline: string;
+  description: string;
+  icon: typeof Code;
+  services: { name: string; slug: string; tag: string }[];
+}
+
+const pillars: Pillar[] = [
+  {
+    id: "build",
+    number: "01",
+    title: "BUILD",
+    tagline: "Software & Web Infrastructure",
+    description:
+      "Enterprise-grade web applications, Shopify stores, and digital infrastructure engineered for speed, conversions, and scale.",
+    icon: Code,
+    services: [
+      { name: "Website Design & Development", slug: "website-development", tag: "Full-Stack" },
+      { name: "Shopify & E-commerce Stores", slug: "shopify-development", tag: "Headless & Liquid" },
+      { name: "Custom Software & Web Apps", slug: "software-support", tag: "Scalable Arch" },
+    ],
+  },
+  {
+    id: "automate",
+    number: "02",
+    title: "AUTOMATE",
+    tagline: "AI Workflows & Operations",
+    description:
+      "End-to-end intelligent automation for e-commerce, internal processes, and generative AI UGC video pipelines.",
+    icon: Cpu,
+    services: [
+      { name: "Advance AI Automation", slug: "ai-automation", tag: "Intelligent Workflows" },
+      { name: "AI UGC Video Ads", slug: "ai-ugc-video-ads", tag: "Generative Video" },
+      { name: "E-commerce Automation", slug: "ecommerce-automation", tag: "Sync & Repricing" },
+    ],
+  },
+  {
+    id: "grow",
+    number: "03",
+    title: "GROW",
+    tagline: "Performance & Marketplace Scale",
+    description:
+      "Data-backed performance marketing, marketplace advertising, and organic search strategies optimized strictly for ROAS and revenue.",
+    icon: TrendingUp,
+    services: [
+      { name: "Performance Marketing (Meta & Google)", slug: "performance-marketing", tag: "High-ROI Media" },
+      { name: "Marketplace Ads (Amazon & Flipkart)", slug: "ecommerce-ads", tag: "ACoS Optimization" },
+      { name: "AI-Assisted SEO & Search Growth", slug: "ai-assisted-seo", tag: "Organic Authority" },
+    ],
+  },
+];
 
 export default function FlagshipServices() {
-  const [showAll, setShowAll] = useState(false);
-
-  const visibleServices = showAll ? flagshipServices : flagshipServices.slice(0, 6);
-
   return (
     <section
       style={{
-        paddingTop: "48px",
-        paddingBottom: "48px",
+        paddingTop: "64px",
+        paddingBottom: "64px",
         position: "relative",
       }}
     >
       <div className="container-custom">
-        <div style={{ marginBottom: "14px" }}>
-          <span className="section-label">WHAT WE DO</span>
+        <div style={{ marginBottom: "16px" }}>
+          <span className="section-label">CORE FRAMEWORK</span>
         </div>
 
         <div
@@ -29,88 +79,119 @@ export default function FlagshipServices() {
             justifyContent: "space-between",
             alignItems: "flex-end",
             flexWrap: "wrap",
-            gap: "20px",
-            marginBottom: "32px",
+            gap: "24px",
+            marginBottom: "40px",
           }}
         >
-          <h2
-            style={{
-              fontFamily: '"Syne", sans-serif',
-              fontWeight: 800,
-              fontSize: "clamp(36px, 4.5vw, 60px)",
-              lineHeight: "1.1",
-              letterSpacing: "-0.03em",
-              color: "var(--text-primary)",
-              maxWidth: "680px",
-            }}
-          >
-            Built for brands that need to be{" "}
-            <span className="gradient-text">seen.</span>
-          </h2>
+          <div>
+            <h2
+              style={{
+                fontWeight: 800,
+                fontSize: "clamp(32px, 4.2vw, 52px)",
+                lineHeight: "1.12",
+                letterSpacing: "-0.03em",
+                color: "var(--text-primary)",
+                maxWidth: "680px",
+              }}
+            >
+              Engineered for scale in three pillars:{" "}
+              <span className="gradient-text">Build. Automate. Grow.</span>
+            </h2>
+          </div>
 
-          <Link href="/services" className="btn-secondary">
-            All services →
+          <Link href="/services" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <span>View full 30+ service directory</span>
+            <ArrowIcon size={14} />
           </Link>
         </div>
 
-        {/* Services Grid */}
+        {/* 3 Pillars Grid */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            gap: "20px",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "24px",
           }}
-          className="services-showcase-grid"
+          className="pillars-grid"
         >
-          {visibleServices.map((svc) => (
-            <Link
-              key={svc.slug}
-              href={`/services/${svc.slug}`}
-              style={{ textDecoration: "none" }}
-            >
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon;
+            return (
               <div
+                key={pillar.id}
                 className="card"
                 style={{
-                  padding: "32px",
-                  height: "100%",
+                  padding: "36px 30px",
+                  borderRadius: "20px",
+                  backgroundColor: "var(--bg-card)",
+                  border: "1px solid var(--border-card)",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  borderRadius: "16px",
-                  backgroundColor: "var(--bg-card)",
-                  border: "1px solid var(--border-card)",
-                  position: "relative",
-                  overflow: "hidden",
+                  minHeight: "460px",
                 }}
               >
                 <div>
-                  {/* Category badge */}
+                  {/* Top: Icon + Number */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginBottom: "28px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "44px",
+                        height: "44px",
+                        borderRadius: "12px",
+                        background: "rgba(245, 185, 46, 0.12)",
+                        border: "1px solid rgba(245, 185, 46, 0.25)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "var(--accent)",
+                      }}
+                    >
+                      <Icon size={22} />
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: '"Plus Jakarta Sans", sans-serif',
+                        fontSize: "14px",
+                        fontWeight: 800,
+                        color: "var(--text-faint)",
+                        letterSpacing: "0.08em",
+                      }}
+                    >
+                      {pillar.number}
+                    </span>
+                  </div>
+
+                  {/* Title & Tagline */}
                   <div
                     style={{
                       fontSize: "11px",
                       fontWeight: 700,
-                      color: "var(--text-faint)",
+                      color: "var(--accent)",
                       textTransform: "uppercase",
                       letterSpacing: "0.10em",
-                      marginBottom: "16px",
-                      fontFamily: '"Space Grotesk", sans-serif',
+                      marginBottom: "6px",
                     }}
                   >
-                    {svc.tagline.toUpperCase()}
+                    {pillar.tagline}
                   </div>
-
                   <h3
                     style={{
-                      fontFamily: '"Syne", sans-serif',
-                      fontWeight: 700,
-                      fontSize: "22px",
+                      fontWeight: 800,
+                      fontSize: "26px",
                       color: "var(--text-primary)",
-                      lineHeight: "1.25",
+                      letterSpacing: "-0.02em",
                       marginBottom: "14px",
-                      letterSpacing: "-0.01em",
                     }}
                   >
-                    {svc.name}
+                    {pillar.title}
                   </h3>
 
                   <p
@@ -118,70 +199,125 @@ export default function FlagshipServices() {
                       fontSize: "14px",
                       color: "var(--text-muted)",
                       lineHeight: "1.65",
-                      fontFamily: '"Space Grotesk", sans-serif',
+                      marginBottom: "28px",
                     }}
                   >
-                    {svc.description}
+                    {pillar.description}
                   </p>
+
+                  {/* Key Services in this Pillar */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                    {pillar.services.map((s) => (
+                      <Link
+                        key={s.slug}
+                        href={`/services/${s.slug}`}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          padding: "12px 14px",
+                          borderRadius: "10px",
+                          background: "var(--bg-surface)",
+                          border: "1px solid var(--border)",
+                          textDecoration: "none",
+                          color: "var(--text-primary)",
+                          transition: "border-color 150ms ease, transform 150ms ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(245, 185, 46, 0.4)";
+                          (e.currentTarget as HTMLAnchorElement).style.transform = "translateX(2px)";
+                        }}
+                        onMouseLeave={(e) => {
+                          (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
+                          (e.currentTarget as HTMLAnchorElement).style.transform = "none";
+                        }}
+                      >
+                        <div style={{ minWidth: 0, flex: 1, paddingRight: "8px" }}>
+                          <div style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
+                            {s.name}
+                          </div>
+                          <div style={{ fontSize: "11px", color: "var(--text-faint)", marginTop: "1px" }}>
+                            {s.tag}
+                          </div>
+                        </div>
+                        <ArrowIcon size={14} style={{ color: "var(--accent)" }} />
+                      </Link>
+                    ))}
+                  </div>
                 </div>
 
-                <div
-                  style={{
-                    marginTop: "28px",
-                    fontSize: "13px",
-                    fontWeight: 700,
-                    color: "var(--accent)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                  }}
-                >
-                  Read more →
+                <div style={{ marginTop: "28px", paddingTop: "16px", borderTop: "1px solid var(--border)" }}>
+                  <Link
+                    href={`/services#${pillar.id}`}
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: 600,
+                      color: "var(--accent)",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                    }}
+                  >
+                    <span>Explore all {pillar.title.toLowerCase()} capabilities</span>
+                    <ArrowIcon size={13} />
+                  </Link>
                 </div>
               </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
 
-        {/* ── Show More / Show Less Button ── */}
-        {flagshipServices.length > 6 && (
-          <div style={{ marginTop: "32px", display: "flex", justifyContent: "center" }}>
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="btn-secondary"
+        {/* Directory Router Strip */}
+        <div
+          style={{
+            marginTop: "32px",
+            padding: "24px 32px",
+            borderRadius: "16px",
+            border: "1px solid var(--border-card)",
+            background: "linear-gradient(135deg, rgba(245,185,46,0.06) 0%, var(--bg-card) 100%)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "16px",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            <div
               style={{
-                display: "inline-flex",
+                width: "36px",
+                height: "36px",
+                borderRadius: "10px",
+                background: "rgba(245,185,46,0.15)",
+                display: "flex",
                 alignItems: "center",
-                gap: "8px",
-                padding: "12px 28px",
-                borderRadius: "9999px",
-                cursor: "pointer",
-                fontSize: "14px",
-                fontWeight: 700,
-                fontFamily: '"Space Grotesk", sans-serif',
+                justifyContent: "center",
+                color: "var(--accent)",
+                flexShrink: 0,
               }}
             >
-              <span>{showAll ? "Show Less" : `Show More (+${flagshipServices.length - 6} Services)`}</span>
-              <ChevronDown
-                size={16}
-                style={{
-                  transition: "transform 200ms ease",
-                  transform: showAll ? "rotate(180deg)" : "none",
-                }}
-              />
-            </button>
+              <Sparkles size={18} />
+            </div>
+            <div>
+              <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)" }}>
+                Looking for all 7 specialized disciplines?
+              </div>
+              <div style={{ fontSize: "13px", color: "var(--text-muted)" }}>
+                Browse our complete taxonomy of 30+ bespoke services and technical capabilities.
+              </div>
+            </div>
           </div>
-        )}
+
+          <Link href="/services" className="btn-primary" style={{ padding: "10px 22px", fontSize: "13px" }}>
+            Explore Services Directory
+          </Link>
+        </div>
       </div>
 
       <style>{`
         @media (max-width: 1024px) {
-          .services-showcase-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 640px) {
-          .services-showcase-grid {
+          .pillars-grid {
             grid-template-columns: 1fr !important;
           }
         }
@@ -189,3 +325,4 @@ export default function FlagshipServices() {
     </section>
   );
 }
+

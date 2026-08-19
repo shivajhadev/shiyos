@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 import {
   Search,
   Download,
@@ -913,7 +914,8 @@ export default function AdminDashboardPage() {
                   </div>
 
                   <Link href="/team" target="_blank" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "var(--accent)", textDecoration: "none", fontWeight: 700 }}>
-                    Preview /team page →
+                    <span>Preview /team page</span>
+                    <ArrowIcon size={12} />
                   </Link>
                 </div>
 

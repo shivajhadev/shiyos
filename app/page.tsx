@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import IndustriesMarquee from "@/components/home/Marquee";
-import PainPoints from "@/components/home/PainPoints";
-import ServicesOverview from "@/components/home/ServicesOverview";
 import FlagshipServices from "@/components/home/FlagshipServices";
 import ProcessTimeline from "@/components/home/ProcessTimeline";
 import WhyShiyos from "@/components/home/WhyShiyos";
@@ -10,9 +8,9 @@ import WorkTeaser from "@/components/home/WorkTeaser";
 import LeadFormSection from "@/components/home/LeadFormSection";
 
 export const metadata: Metadata = {
-  title: "Shiyos Technologies — E-commerce Growth, AI Automation & Digital Marketing Agency",
+  title: "Shiyos Technologies — AI • Software • Automation • Growth",
   description:
-    "Shiyos Technologies is a full-service IT, e-commerce growth, and digital marketing company. AI automation, performance marketing, influencer campaigns, and website development — all founder-led.",
+    "Shiyos Technologies is a founder-led B2B growth and software engineering studio. Full-service IT, AI automation, custom web/app development, and high-ROI performance marketing.",
 };
 
 export default function HomePage() {
@@ -20,8 +18,6 @@ export default function HomePage() {
     <>
       <Hero />
       <IndustriesMarquee />
-      <PainPoints />
-      <ServicesOverview />
       <FlagshipServices />
       <ProcessTimeline />
       <WhyShiyos />

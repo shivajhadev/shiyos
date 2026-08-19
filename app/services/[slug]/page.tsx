@@ -4,6 +4,7 @@ import Link from "next/link";
 import { allServices } from "@/lib/services-data";
 import LeadForm from "@/components/home/LeadForm";
 import { Check, Sparkles } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -53,7 +54,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               marginBottom: "32px",
               fontSize: "13px",
               color: "var(--text-faint)",
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             <Link href="/" style={{ color: "var(--text-faint)", textDecoration: "none" }}>Home</Link>
@@ -87,10 +87,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
           <h1
             style={{
-              fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
-              fontSize: "clamp(38px, 5vw, 64px)",
-              lineHeight: "1.05",
+              fontSize: "clamp(38px, 5vw, 60px)",
+              lineHeight: "1.1",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
               marginBottom: "24px",
@@ -105,7 +104,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               color: "var(--text-muted)",
               maxWidth: "640px",
               lineHeight: "1.65",
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             {service.description}
@@ -129,7 +127,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             <div>
               <h2
                 style={{
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
                   fontSize: "28px",
                   color: "var(--text-primary)",
@@ -199,10 +196,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
                 <h3
                   style={{
-                    fontFamily: '"Syne", sans-serif',
                     fontWeight: 800,
                     fontSize: "20px",
                     color: "var(--text-primary)",
+                    letterSpacing: "-0.02em",
                     marginBottom: "12px",
                   }}
                 >
@@ -219,10 +216,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 <div style={{ marginTop: "64px" }}>
                   <h3
                     style={{
-                      fontFamily: '"Syne", sans-serif',
                       fontWeight: 800,
                       fontSize: "22px",
                       color: "var(--text-primary)",
+                      letterSpacing: "-0.02em",
                       marginBottom: "20px",
                     }}
                   >
@@ -248,11 +245,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                       >
                         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                           <Sparkles size={14} style={{ color: "var(--accent)" }} />
-                          <span style={{ fontWeight: 700, fontSize: "14px", fontFamily: '"Syne", sans-serif' }}>
+                          <span style={{ fontWeight: 700, fontSize: "14px" }}>
                             {rel.name}
                           </span>
                         </div>
-                        <span style={{ color: "var(--accent)", fontSize: "13px", fontWeight: 700 }}>→</span>
+                        <ArrowIcon size={14} style={{ color: "var(--accent)" }} />
                       </Link>
                     ))}
                   </div>
@@ -285,10 +282,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
                 <h3
                   style={{
-                    fontFamily: '"Syne", sans-serif',
                     fontWeight: 800,
                     fontSize: "22px",
                     color: "var(--text-primary)",
+                    letterSpacing: "-0.02em",
                     marginBottom: "8px",
                   }}
                 >
@@ -338,6 +335,14 @@ function getServiceDetails(slug: string): string[] {
       "Automated content generation, product metadata generation, and customer communication workflows",
       "Deep integration with your current software stack (CRM, ERP, Shopify, warehouse systems)",
       "Continuous prompt engineering and accuracy monitoring",
+    ],
+    "ai-ugc-video-ads": [
+      "Hyper-realistic AI creator generation and avatar scripting tailored to your target audience",
+      "High-converting direct-response creative frameworks: 5+ scroll-stopping hooks & multiple CTA variations per concept",
+      "Studio-grade AI voiceovers, voice cloning, and multilingual localization across 20+ languages",
+      "Rapid creative volume: test 20–50 video variations weekly at 90% lower cost than traditional video shoots",
+      "Platform-optimized delivery formatted for Meta Reels, TikTok, and YouTube Shorts with native subtitles & sound design",
+      "Weekly performance reviews and creative iteration based on actual ROAS, CTR, and hook retention rates",
     ],
     "ai-assisted-seo": [
       "Full technical SEO overhaul: Core Web Vitals, crawl indexability, schema markup, and site architecture",

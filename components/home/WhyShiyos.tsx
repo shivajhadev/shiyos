@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Check } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 const reasons = [
   "Editors, media buyers, designers, and developers in one room — nothing is subcontracted out.",
@@ -38,10 +39,9 @@ export default function WhyShiyos() {
           <div>
             <h2
               style={{
-                fontFamily: '"Syne", sans-serif',
                 fontWeight: 800,
-                fontSize: "clamp(36px, 4.5vw, 56px)",
-                lineHeight: "1.1",
+                fontSize: "clamp(34px, 4.5vw, 54px)",
+                lineHeight: "1.12",
                 letterSpacing: "-0.03em",
                 color: "var(--text-primary)",
                 marginBottom: "20px",
@@ -57,7 +57,6 @@ export default function WhyShiyos() {
                 color: "var(--text-muted)",
                 lineHeight: "1.65",
                 marginBottom: "40px",
-                fontFamily: '"Space Grotesk", sans-serif',
               }}
             >
               Big enough to run every discipline in-house, small enough that the
@@ -70,21 +69,20 @@ export default function WhyShiyos() {
                   key={i}
                   style={{
                     display: "flex",
-                    gap: "16px",
+                    gap: "14px",
                     alignItems: "flex-start",
                     padding: "16px 20px",
-                    borderRadius: "12px",
+                    borderRadius: "14px",
                     border: "1px solid var(--border-card)",
                     background: "var(--bg-card)",
                   }}
                 >
                   <div
                     style={{
-                      width: "22px",
-                      height: "22px",
+                      width: "20px",
+                      height: "20px",
                       borderRadius: "50%",
                       background: "rgba(245, 185, 46, 0.15)",
-                      border: "1px solid rgba(245, 185, 46, 0.4)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -94,44 +92,32 @@ export default function WhyShiyos() {
                   >
                     <Check size={12} style={{ color: "var(--accent)" }} />
                   </div>
-                  <p
-                    style={{
-                      fontSize: "14px",
-                      color: "var(--text-primary)",
-                      lineHeight: "1.6",
-                      fontFamily: '"Space Grotesk", sans-serif',
-                      fontWeight: 500,
-                    }}
-                  >
+                  <span style={{ fontSize: "14px", color: "var(--text-primary)", lineHeight: "1.6" }}>
                     {reason}
-                  </p>
+                  </span>
                 </div>
               ))}
             </div>
 
             <div style={{ marginTop: "36px" }}>
-              <Link href="/about" className="btn-secondary">
-                More about the studio →
+              <Link href="/about" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                <span>More about the studio</span>
+                <ArrowIcon size={14} />
               </Link>
             </div>
           </div>
 
-          {/* Right: visual card preview matching DigiHandler style */}
-          <div style={{ position: "relative" }}>
+          {/* Right: manifesto quote card */}
+          <div>
             <div
+              className="card"
               style={{
-                borderRadius: "24px",
-                overflow: "hidden",
+                padding: "40px",
                 border: "1px solid var(--border-card)",
-                background: "linear-gradient(145deg, #151515, #0d0d0d)",
-                padding: "36px",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
-                position: "relative",
+                borderRadius: "20px",
+                background: "linear-gradient(145deg, #151515, #0f0f0f)",
               }}
             >
-              {/* Star decoration */}
-              <span className="sparkle sparkle-sm" style={{ top: "20px", right: "20px" }}>✦</span>
-
               <div
                 style={{
                   fontSize: "11px",
@@ -147,11 +133,11 @@ export default function WhyShiyos() {
 
               <div
                 style={{
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
-                  fontSize: "28px",
+                  fontSize: "26px",
                   color: "var(--text-primary)",
-                  lineHeight: "1.2",
+                  lineHeight: "1.25",
+                  letterSpacing: "-0.02em",
                   marginBottom: "20px",
                 }}
               >
@@ -179,7 +165,7 @@ export default function WhyShiyos() {
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: '"Syne", sans-serif', fontWeight: 800, fontSize: "28px", color: "var(--accent)" }}>
+                  <div style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, fontSize: "28px", color: "var(--accent)", letterSpacing: "-0.03em" }}>
                     150+
                   </div>
                   <div style={{ fontSize: "12px", color: "var(--text-faint)", marginTop: "2px" }}>
@@ -187,11 +173,11 @@ export default function WhyShiyos() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: '"Syne", sans-serif', fontWeight: 800, fontSize: "28px", color: "var(--text-primary)" }}>
-                    3+ <span className="gradient-text">yrs</span>
+                  <div style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, fontSize: "28px", color: "var(--text-primary)", letterSpacing: "-0.03em" }}>
+                    3+ <span className="gradient-text" style={{ fontSize: "20px", fontWeight: 700 }}>Years</span>
                   </div>
                   <div style={{ fontSize: "12px", color: "var(--text-faint)", marginTop: "2px" }}>
-                    Founder-Led
+                    Founder-Led Studio
                   </div>
                 </div>
               </div>

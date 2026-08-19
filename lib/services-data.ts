@@ -86,11 +86,11 @@ export const serviceCategories: ServiceCategory[] = [
   {
     name: "AI Automation & Intelligence",
     slug: "ai-automation",
-    description: "Harness AI to automate repetitive workflows, generate creatives, and rank smarter in search.",
+    description: "Harness AI to automate repetitive workflows, generate high-converting video creatives, and rank smarter in search.",
     iconName: "Cpu",
     services: [
       {
-        name: "AI Automation",
+        name: "Advance AI Automation",
         slug: "ai-automation",
         tagline: "Work smarter",
         description: "Custom AI workflows and automation pipelines that eliminate manual tasks, surface insights from your data, and let your team focus on high-value work.",
@@ -98,6 +98,16 @@ export const serviceCategories: ServiceCategory[] = [
         category: "AI Automation & Intelligence",
         categorySlug: "ai-automation",
         iconName: "Cpu",
+      },
+      {
+        name: "AI UGC Video Ads",
+        slug: "ai-ugc-video-ads",
+        tagline: "AI UGC Creatives",
+        description: "Hyper-realistic AI-generated UGC video ads featuring synthetic human creators, script-to-video automation, dynamic hooks, and multilingual voiceovers built for high ROAS on Meta, TikTok & YouTube Shorts.",
+        isFlagship: true,
+        category: "AI Automation & Intelligence",
+        categorySlug: "ai-automation",
+        iconName: "Video",
       },
       {
         name: "AI-Assisted SEO",
@@ -116,7 +126,7 @@ export const serviceCategories: ServiceCategory[] = [
         description: "High-volume, on-brand video content produced with AI tools — product demos, ad creatives, explainers — at a fraction of traditional production cost.",
         category: "AI Automation & Intelligence",
         categorySlug: "ai-automation",
-        iconName: "Video",
+        iconName: "Film",
       },
     ],
   },
@@ -352,21 +362,30 @@ export const flagshipServices = serviceCategories
 
 export const allServices = serviceCategories.flatMap((cat) => cat.services);
 
-export const rotatingWords = [
-  "Influencer Marketing",
-  "Website Development",
-  "AI-Assisted SEO",
-  "Ecommerce Ads",
-  "On-Demand Extension",
-  "AI Automation",
-  "Performance Marketing",
-  "Extension Making",
+export interface RotatingPhrase {
+  line1: string;
+  line2: string;
+}
+
+export const rotatingPhrases: RotatingPhrase[] = [
+  { line1: "Advance AI", line2: "Automation" },
+  { line1: "AI UGC", line2: "Video Ads" },
+  { line1: "Ecommerce", line2: "Ads" },
+  { line1: "Performance", line2: "Marketing" },
+  { line1: "Website", line2: "Development" },
+  { line1: "Influencer", line2: "Marketing" },
+  { line1: "AI-Assisted", line2: "SEO" },
+  { line1: "On-Demand", line2: "Extension" },
+  { line1: "Extension", line2: "Making" },
 ];
 
+export const rotatingWords = rotatingPhrases.map((p) => `${p.line1} ${p.line2}`);
+
 export const serviceNeedsOptions = [
+  "Advance AI Automation",
+  "AI UGC Video Ads",
   "E-commerce Automation",
   "E-commerce Ads (Amazon / Flipkart)",
-  "AI Automation",
   "AI-Assisted SEO",
   "Performance Marketing (Meta & Google)",
   "Influencer Marketing",

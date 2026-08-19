@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { serviceNeedsOptions } from "@/lib/services-data";
 import { CheckCircle, Loader2 } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 interface LeadFormProps {
   sourcePage?: string;
@@ -113,10 +114,10 @@ export default function LeadForm({
         </div>
         <h3
           style={{
-            fontFamily: '"Syne", sans-serif',
             fontWeight: 800,
             fontSize: "24px",
             color: "var(--text-primary)",
+            letterSpacing: "-0.02em",
           }}
         >
           Thank you — we're on it.
@@ -274,7 +275,10 @@ export default function LeadForm({
             Sending…
           </>
         ) : (
-          "Get a free audit →"
+          <>
+            <span>Get a free audit</span>
+            <ArrowIcon size={14} />
+          </>
         )}
       </button>
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 export const metadata: Metadata = {
   title: "Journal — Growth Insights from Shiyos Technologies",
@@ -75,9 +76,8 @@ export default function JournalPage() {
           </span>
           <h1
             style={{
-              fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
-              fontSize: "clamp(40px, 5.5vw, 68px)",
+              fontSize: "clamp(38px, 5.2vw, 64px)",
               lineHeight: "1.05",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
@@ -94,7 +94,6 @@ export default function JournalPage() {
               color: "var(--text-muted)",
               maxWidth: "560px",
               lineHeight: "1.65",
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             Practical e-commerce, AI automation, SEO, and paid performance insights written by practitioners.
@@ -147,7 +146,6 @@ export default function JournalPage() {
 
                   <h2
                     style={{
-                      fontFamily: '"Syne", sans-serif',
                       fontWeight: 800,
                       fontSize: "20px",
                       color: "var(--text-primary)",
@@ -164,7 +162,6 @@ export default function JournalPage() {
                       fontSize: "14px",
                       color: "var(--text-muted)",
                       lineHeight: "1.65",
-                      fontFamily: '"Space Grotesk", sans-serif',
                     }}
                   >
                     {post.excerpt}
@@ -184,8 +181,9 @@ export default function JournalPage() {
                   <div style={{ fontSize: "12px", color: "var(--text-faint)" }}>
                     {post.date} · {post.readTime}
                   </div>
-                  <span style={{ fontSize: "13px", fontWeight: 700, color: "var(--accent)" }}>
-                    Read article →
+                  <span style={{ fontSize: "13px", fontWeight: 700, color: "var(--accent)", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    <span>Read article</span>
+                    <ArrowIcon size={12} />
                   </span>
                 </div>
               </article>
@@ -193,8 +191,9 @@ export default function JournalPage() {
           </div>
 
           <div style={{ textAlign: "center", marginTop: "64px" }}>
-            <Link href="/contact" className="btn-primary">
-              Get Personalised Audit →
+            <Link href="/contact" className="btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <span>Get Personalised Audit</span>
+              <ArrowIcon size={14} />
             </Link>
           </div>
         </div>

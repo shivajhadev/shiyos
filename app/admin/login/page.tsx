@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Lock, User, ArrowRight, Eye, EyeOff, ShieldCheck, Sparkles } from "lucide-react";
+import { Lock, User, Eye, EyeOff, ShieldCheck } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -227,7 +228,14 @@ export default function AdminLoginPage() {
               cursor: loading ? "not-allowed" : "pointer",
             }}
           >
-            {loading ? "Authenticating..." : "Sign In to Admin →"}
+            {loading ? (
+              "Authenticating..."
+            ) : (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                <span>Sign In to Admin</span>
+                <ArrowIcon size={14} />
+              </span>
+            )}
           </button>
         </form>
 

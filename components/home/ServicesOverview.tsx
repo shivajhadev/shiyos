@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { serviceCategories } from "@/lib/services-data";
 import { ChevronDown, Sparkles } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 export default function ServicesOverview() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
@@ -36,10 +37,9 @@ export default function ServicesOverview() {
         >
           <h2
             style={{
-              fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
-              fontSize: "clamp(32px, 4.5vw, 60px)",
-              lineHeight: "1.1",
+              fontSize: "clamp(32px, 4.5vw, 56px)",
+              lineHeight: "1.12",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
               maxWidth: "680px",
@@ -49,8 +49,9 @@ export default function ServicesOverview() {
             <span className="gradient-text">growth.</span>
           </h2>
 
-          <Link href="/services" className="btn-secondary">
-            Explore directory →
+          <Link href="/services" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <span>Explore directory</span>
+            <ArrowIcon size={14} />
           </Link>
         </div>
 
@@ -108,12 +109,11 @@ export default function ServicesOverview() {
                     <div style={{ minWidth: 0, flex: 1 }}>
                       <div
                         style={{
-                          fontFamily: '"Syne", sans-serif',
                           fontWeight: 800,
-                          fontSize: "clamp(16px, 3.8vw, 20px)",
+                          fontSize: "clamp(16px, 3.8vw, 19px)",
                           color: "var(--text-primary)",
                           marginBottom: "2px",
-                          letterSpacing: "-0.01em",
+                          letterSpacing: "-0.02em",
                           lineHeight: "1.25",
                         }}
                       >
@@ -123,7 +123,6 @@ export default function ServicesOverview() {
                         style={{
                           fontSize: "13px",
                           color: "var(--text-muted)",
-                          fontFamily: '"Space Grotesk", sans-serif',
                           lineHeight: "1.4",
                         }}
                       >
@@ -206,7 +205,7 @@ export default function ServicesOverview() {
                           {svc.isFlagship ? (
                             <span style={{ color: "var(--accent)", fontSize: "11px", fontWeight: 700 }}>★</span>
                           ) : (
-                            <span style={{ color: "var(--text-faint)", fontSize: "12px" }}>→</span>
+                            <ArrowIcon size={11} style={{ color: "var(--text-faint)" }} />
                           )}
                         </Link>
                       ))}
@@ -232,7 +231,6 @@ export default function ServicesOverview() {
               cursor: "pointer",
               fontSize: "14px",
               fontWeight: 700,
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             <span>{showAll ? "Show Less" : `Show More (+${serviceCategories.length - 4} Categories)`}</span>

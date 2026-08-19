@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MessageCircle, Phone, Sparkles } from "lucide-react";
-import { rotatingWords } from "@/lib/services-data";
+import { rotatingPhrases } from "@/lib/services-data";
 
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -13,12 +13,14 @@ export default function Hero() {
     const interval = setInterval(() => {
       setVisible(false);
       setTimeout(() => {
-        setWordIndex((prev) => (prev + 1) % rotatingWords.length);
+        setWordIndex((prev) => (prev + 1) % rotatingPhrases.length);
         setVisible(true);
       }, 280);
     }, 2800);
     return () => clearInterval(interval);
   }, []);
+
+  const currentPhrase = rotatingPhrases[wordIndex] || rotatingPhrases[0];
 
   return (
     <section
@@ -65,59 +67,58 @@ export default function Hero() {
           <div>
             <div className="section-label" style={{ marginBottom: "24px", display: "inline-flex" }}>
               <span style={{ color: "var(--accent)", fontSize: "7px" }}>●</span>
-              IT &amp; Growth Studio · India · Working Worldwide
+              AI • SOFTWARE • AUTOMATION • GROWTH
             </div>
 
-            {/* 4-Line Locked Headline */}
-            <div
+            {/* 4-Line Locked Headline (Headings: Plus Jakarta Sans) */}
+            <h1
               style={{
-                fontFamily: '"Syne", "Space Grotesk", sans-serif',
+                fontFamily: '"Plus Jakarta Sans", sans-serif',
                 fontWeight: 800,
-                fontSize: "clamp(28px, 5.5vw, 54px)",
-                lineHeight: "1.1",
-                letterSpacing: "-0.03em",
+                fontSize: "clamp(34px, 5.2vw, 60px)",
+                lineHeight: "1.12",
+                letterSpacing: "-0.04em",
                 color: "var(--text-primary)",
               }}
             >
               <div>We engineer</div>
               <div>growth through</div>
-              {/* Rotating word container */}
-              <div style={{ minHeight: "1.3em", overflow: "hidden", marginTop: "4px" }}>
-                <span
+              {/* Rotating word container (Line 3 & Line 4) */}
+              <div style={{ minHeight: "2.3em", overflow: "hidden", marginTop: "4px" }}>
+                <div
                   className="gradient-text"
                   style={{
                     display: "block",
                     transition: "opacity 280ms ease, transform 280ms ease",
                     opacity: visible ? 1 : 0,
                     transform: visible ? "translateY(0)" : "translateY(8px)",
-                    fontStyle: "italic",
+                    letterSpacing: "-0.04em",
                     wordBreak: "break-word",
                   }}
                 >
-                  {rotatingWords[wordIndex]}
-                </span>
+                  <div>{currentPhrase.line1}</div>
+                  <div>{currentPhrase.line2}</div>
+                </div>
               </div>
-            </div>
+            </h1>
 
             <p
               style={{
-                fontSize: "clamp(14px, 3.5vw, 16px)",
+                fontSize: "clamp(15px, 3.5vw, 17px)",
                 color: "var(--text-muted)",
-                lineHeight: "1.65",
+                lineHeight: "1.7",
                 marginTop: "20px",
                 marginBottom: "28px",
-                maxWidth: "480px",
-                fontFamily: '"Space Grotesk", sans-serif',
+                maxWidth: "500px",
                 fontWeight: 400,
               }}
             >
-              Full-service IT, e-commerce growth, and digital marketing.
-              Founder-led, results-driven. Every service you need, under one roof.
+              We help businesses build and grow online through websites, apps, e-commerce, Shopify, Meta & Google Ads, SEO, influencer marketing, and social media - with one team handling everything from strategy to execution.
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
               <Link href="/contact" className="btn-primary" style={{ padding: "12px 24px" }}>
-                Get a Free Audit →
+                Let's talk Growth
               </Link>
               <a
                 href="https://wa.me/917986408226?text=Hi%2C%20I%27d%20like%20to%20discuss%20my%20growth%20needs"
@@ -134,7 +135,6 @@ export default function Hero() {
                   fontSize: "14px",
                   fontWeight: 700,
                   textDecoration: "none",
-                  fontFamily: '"Space Grotesk", sans-serif',
                   transition: "opacity 150ms, transform 150ms",
                 }}
               >
@@ -156,7 +156,6 @@ export default function Hero() {
                   fontSize: "13px",
                   color: "var(--text-muted)",
                   textDecoration: "none",
-                  fontFamily: '"Space Grotesk", sans-serif',
                   fontWeight: 500,
                 }}
               >
@@ -173,12 +172,11 @@ export default function Hero() {
                   background: "transparent",
                   fontSize: "13px",
                   color: "var(--text-muted)",
-                  fontFamily: '"Space Grotesk", sans-serif',
                   fontWeight: 500,
                 }}
               >
                 <span style={{ color: "#22c55e", fontSize: "7px" }}>●</span>
-                Response within 4 hours
+                Usually reply within a few hours
               </div>
             </div>
           </div>
@@ -277,7 +275,6 @@ export default function Hero() {
               >
                 <span
                   style={{
-                    fontFamily: '"Syne", sans-serif',
                     fontWeight: 800,
                     fontSize: "56px",
                     color: "#0a0a0a",
@@ -288,12 +285,12 @@ export default function Hero() {
                 </span>
                 <span
                   style={{
-                    fontSize: "9px",
+                    fontSize: "10px",
                     fontWeight: 800,
                     color: "#0a0a0a",
-                    letterSpacing: "0.12em",
+                    letterSpacing: "0.14em",
                     textTransform: "uppercase",
-                    marginTop: "2px",
+                    marginTop: "4px",
                   }}
                 >
                   SHIYOS
@@ -316,10 +313,10 @@ export default function Hero() {
                   animation: "float-card-1 4.5s ease-in-out infinite",
                 }}
               >
-                <div style={{ fontFamily: '"Syne", sans-serif', fontWeight: 800, fontSize: "18px", color: "var(--text-primary)" }}>
-                  150+ Brands
+                <div style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, fontSize: "18px", color: "var(--text-primary)", letterSpacing: "-0.03em" }}>
+                  150+ Projects
                 </div>
-                <div style={{ fontSize: "10px", color: "var(--accent)", fontWeight: 700 }}>E-comm &amp; D2C Scale</div>
+                <div style={{ fontSize: "11px", color: "var(--accent)", fontWeight: 600 }}>E-comm &amp; D2C Scale</div>
               </div>
 
               {/* Floating Stat Card 2 */}
@@ -338,10 +335,10 @@ export default function Hero() {
                   animation: "float-card-2 5s ease-in-out infinite",
                 }}
               >
-                <div style={{ fontFamily: '"Syne", sans-serif', fontWeight: 800, fontSize: "18px", color: "var(--text-primary)" }}>
+                <div style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, fontSize: "18px", color: "var(--text-primary)", letterSpacing: "-0.03em" }}>
                   4.8x Avg ROAS
                 </div>
-                <div style={{ fontSize: "10px", color: "#22c55e", fontWeight: 700 }}>Performance Ads</div>
+                <div style={{ fontSize: "11px", color: "#22c55e", fontWeight: 600 }}>Performance Ads</div>
               </div>
             </div>
           </div>
@@ -360,15 +357,15 @@ export default function Hero() {
           }}
         >
           {[
-            { stat: "150+ Brands", sub: "Across e-commerce, paid ads & SEO" },
-            { stat: "3+ Years", sub: "Founded 2021, founder-led" },
-            { stat: "15 Members", sub: "Specialist growth team" },
+            { stat: "150+ Projects", sub: "Across E-commerce • D2C • Technology" },
+            { stat: "2+ Years", sub: "Building digital businesses" },
+            { stat: "15+ Specialists", sub: "Growth & Tech Experts" },
           ].map(({ stat, sub }) => (
             <div key={stat} style={{ minWidth: 0 }}>
-              <div style={{ fontFamily: '"Syne", sans-serif', fontWeight: 800, fontSize: "clamp(16px, 4vw, 20px)", color: "var(--text-primary)", letterSpacing: "-0.01em" }}>
+              <div style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, fontSize: "clamp(17px, 4vw, 21px)", color: "var(--text-primary)", letterSpacing: "-0.03em" }}>
                 {stat}
               </div>
-              <div style={{ fontSize: "13px", color: "var(--text-muted)", marginTop: "2px", fontFamily: '"Space Grotesk", sans-serif' }}>
+              <div style={{ fontSize: "13px", color: "var(--text-muted)", marginTop: "2px" }}>
                 {sub}
               </div>
             </div>

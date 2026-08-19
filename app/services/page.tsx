@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { serviceCategories, flagshipServices } from "@/lib/services-data";
 import { Sparkles } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 export const metadata: Metadata = {
   title: "Services — Every Service Shiyos Offers",
@@ -27,10 +28,9 @@ export default function ServicesPage() {
           </span>
           <h1
             style={{
-              fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
-              fontSize: "clamp(40px, 5.5vw, 68px)",
-              lineHeight: "1.05",
+              fontSize: "clamp(38px, 5.2vw, 64px)",
+              lineHeight: "1.1",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
               marginBottom: "24px",
@@ -46,7 +46,6 @@ export default function ServicesPage() {
               color: "var(--text-muted)",
               maxWidth: "580px",
               lineHeight: "1.65",
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             Seven specialized categories, 30+ individual services — all under one roof,
@@ -99,23 +98,16 @@ export default function ServicesPage() {
                     </div>
                     <h3
                       style={{
-                        fontFamily: '"Syne", sans-serif',
                         fontWeight: 700,
                         fontSize: "20px",
                         color: "var(--text-primary)",
                         marginBottom: "12px",
-                        letterSpacing: "-0.01em",
+                        letterSpacing: "-0.02em",
                       }}
                     >
                       {svc.name}
                     </h3>
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        color: "var(--text-muted)",
-                        lineHeight: "1.65",
-                      }}
-                    >
+                    <p style={{ fontSize: "14px", color: "var(--text-muted)", lineHeight: "1.6" }}>
                       {svc.description}
                     </p>
                   </div>
@@ -128,10 +120,11 @@ export default function ServicesPage() {
                       color: "var(--accent)",
                       display: "flex",
                       alignItems: "center",
-                      gap: "4px",
+                      gap: "6px",
                     }}
                   >
-                    View service details →
+                    <span>Explore service</span>
+                    <ArrowIcon size={13} />
                   </div>
                 </div>
               </Link>
@@ -173,7 +166,6 @@ export default function ServicesPage() {
                 <div>
                   <h2
                     style={{
-                      fontFamily: '"Syne", sans-serif',
                       fontWeight: 800,
                       fontSize: "28px",
                       color: "var(--text-primary)",
@@ -212,7 +204,7 @@ export default function ServicesPage() {
                     >
                       <div>
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
-                          <span style={{ fontWeight: 700, fontSize: "15px", color: "var(--text-primary)", fontFamily: '"Syne", sans-serif' }}>
+                          <span style={{ fontWeight: 700, fontSize: "15px", color: "var(--text-primary)", letterSpacing: "-0.01em" }}>
                             {svc.name}
                           </span>
                           {svc.isFlagship && (
@@ -223,8 +215,9 @@ export default function ServicesPage() {
                           {svc.tagline}
                         </p>
                       </div>
-                      <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--accent)", marginTop: "12px" }}>
-                        Explore →
+                      <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--accent)", marginTop: "12px", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                        <span>Explore</span>
+                        <ArrowIcon size={11} />
                       </span>
                     </div>
                   </Link>

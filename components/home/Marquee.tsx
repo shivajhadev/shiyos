@@ -52,11 +52,11 @@ export default function IndustriesMarquee() {
                 alignItems: "center",
                 gap: "24px",
                 paddingRight: "48px",
-                fontSize: "15px",
+                fontSize: "14px",
                 fontWeight: 600,
                 color: "var(--text-muted)",
                 whiteSpace: "nowrap",
-                fontFamily: '"Space Grotesk", sans-serif',
+                letterSpacing: "0.02em",
               }}
             >
               {industry}

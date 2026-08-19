@@ -30,10 +30,9 @@ export default function LeadFormSection() {
           <div>
             <h2
               style={{
-                fontFamily: '"Syne", sans-serif',
                 fontWeight: 800,
-                fontSize: "clamp(36px, 4.5vw, 56px)",
-                lineHeight: "1.1",
+                fontSize: "clamp(34px, 4.5vw, 54px)",
+                lineHeight: "1.12",
                 letterSpacing: "-0.03em",
                 color: "var(--text-primary)",
                 marginBottom: "24px",
@@ -49,7 +48,6 @@ export default function LeadFormSection() {
                 color: "var(--text-muted)",
                 lineHeight: "1.7",
                 marginBottom: "48px",
-                fontFamily: '"Space Grotesk", sans-serif',
               }}
             >
               We'll come back to you within 4 hours with a clear plan — no fluff, no obligation.
@@ -99,7 +97,7 @@ export default function LeadFormSection() {
                   <div style={{ fontSize: "11px", fontWeight: 700, color: "var(--text-faint)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px" }}>
                     Call Direct
                   </div>
-                  <div style={{ fontSize: "16px", fontWeight: 700, fontFamily: '"Syne", sans-serif' }}>
+                  <div style={{ fontSize: "16px", fontWeight: 700 }}>
                     +91 79864 08226
                   </div>
                 </div>
@@ -147,7 +145,7 @@ export default function LeadFormSection() {
                   <div style={{ fontSize: "11px", fontWeight: 700, color: "var(--text-faint)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px" }}>
                     Email
                   </div>
-                  <div style={{ fontSize: "16px", fontWeight: 700, fontFamily: '"Syne", sans-serif' }}>
+                  <div style={{ fontSize: "16px", fontWeight: 700 }}>
                     info.shiyos@gmail.com
                   </div>
                 </div>
@@ -197,7 +195,7 @@ export default function LeadFormSection() {
                   <div style={{ fontSize: "11px", fontWeight: 700, color: "var(--text-faint)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px" }}>
                     WhatsApp
                   </div>
-                  <div style={{ fontSize: "16px", fontWeight: 700, fontFamily: '"Syne", sans-serif' }}>
+                  <div style={{ fontSize: "16px", fontWeight: 700 }}>
                     Fastest — within 1 hour
                   </div>
                 </div>

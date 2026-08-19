@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 const sectors = [
   {
@@ -133,10 +134,9 @@ export default function WorkTeaser() {
         >
           <h2
             style={{
-              fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
-              fontSize: "clamp(36px, 4.5vw, 60px)",
-              lineHeight: "1.1",
+              fontSize: "clamp(34px, 4.5vw, 56px)",
+              lineHeight: "1.12",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
               maxWidth: "680px",
@@ -146,8 +146,9 @@ export default function WorkTeaser() {
             <span className="gradient-text">know cold.</span>
           </h2>
 
-          <Link href="/work" className="btn-secondary">
-            View all 12 sectors →
+          <Link href="/work" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <span>View all 12 sectors</span>
+            <ArrowIcon size={14} />
           </Link>
         </div>
 
@@ -213,9 +214,9 @@ export default function WorkTeaser() {
                     alignItems: "center",
                     justifyContent: "center",
                     fontSize: "11px",
+                    fontFamily: '"Plus Jakarta Sans", sans-serif',
                     color: "var(--text-faint)",
-                    fontFamily: '"Space Grotesk", sans-serif',
-                    fontWeight: 600,
+                    fontWeight: 700,
                   }}
                 >
                   {sector.num}
@@ -229,11 +230,11 @@ export default function WorkTeaser() {
                 >
                   <span
                     style={{
-                      fontFamily: '"Syne", sans-serif',
+                      fontFamily: '"Plus Jakarta Sans", sans-serif',
                       fontWeight: 800,
                       fontSize: "36px",
                       color: "var(--text-primary)",
-                      letterSpacing: "0.05em",
+                      letterSpacing: "-0.04em",
                       display: "block",
                     }}
                   >
@@ -245,7 +246,6 @@ export default function WorkTeaser() {
                       color: "var(--accent)",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
-                      fontFamily: '"Space Grotesk", sans-serif',
                       fontWeight: 600,
                     }}
                   >
@@ -270,7 +270,6 @@ export default function WorkTeaser() {
                 <div>
                   <h3
                     style={{
-                      fontFamily: '"Syne", sans-serif',
                       fontWeight: 700,
                       fontSize: "17px",
                       color: "var(--text-primary)",
@@ -285,7 +284,6 @@ export default function WorkTeaser() {
                       fontSize: "13px",
                       color: "var(--text-muted)",
                       lineHeight: "1.55",
-                      fontFamily: '"Space Grotesk", sans-serif',
                     }}
                   >
                     {sector.description}
@@ -306,7 +304,6 @@ export default function WorkTeaser() {
                     style={{
                       fontSize: "11px",
                       color: "var(--text-faint)",
-                      fontFamily: '"Space Grotesk", sans-serif',
                       fontWeight: 500,
                     }}
                   >
@@ -324,7 +321,8 @@ export default function WorkTeaser() {
                       gap: "2px",
                     }}
                   >
-                    Cases →
+                    <span>Cases</span>
+                    <ArrowIcon size={12} />
                   </Link>
                 </div>
               </div>
@@ -346,7 +344,6 @@ export default function WorkTeaser() {
               cursor: "pointer",
               fontSize: "14px",
               fontWeight: 700,
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             <span>{showAll ? "Show Less" : `Show More (+${sectors.length - 4} Sectors)`}</span>

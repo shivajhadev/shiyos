@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "@/lib/theme";
 import { serviceCategories } from "@/lib/services-data";
-import { Menu, X, Sun, Moon, ChevronDown, MessageCircle, Sparkles, ArrowRight } from "lucide-react";
+import { Menu, X, Sun, Moon, ChevronDown, MessageCircle, Sparkles } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 
 export default function Header() {
   const pathname = usePathname();
@@ -94,7 +95,6 @@ export default function Header() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontFamily: '"Syne", sans-serif',
                 fontWeight: 800,
                 fontSize: "17px",
                 color: "#0a0a0a",
@@ -106,11 +106,11 @@ export default function Header() {
             </div>
             <span
               style={{
-                fontFamily: '"Syne", sans-serif',
+                fontFamily: '"Plus Jakarta Sans", sans-serif',
                 fontWeight: 800,
-                fontSize: "19px",
+                fontSize: "20px",
                 color: "var(--text-primary)",
-                letterSpacing: "0.04em",
+                letterSpacing: "-0.03em",
                 textTransform: "uppercase",
               }}
             >
@@ -192,7 +192,6 @@ export default function Header() {
                             color: "var(--accent)",
                             textDecoration: "none",
                             marginBottom: "8px",
-                            fontFamily: '"Space Grotesk", sans-serif',
                             textTransform: "uppercase",
                             letterSpacing: "0.08em",
                           }}
@@ -247,9 +246,13 @@ export default function Header() {
                         fontWeight: 700,
                         color: "var(--accent)",
                         textDecoration: "none",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
                       }}
                     >
-                      View all services →
+                      <span>View all services</span>
+                      <ArrowIcon size={13} />
                     </Link>
                   </div>
                 </div>
@@ -341,9 +344,10 @@ export default function Header() {
             <Link
               href="/contact"
               className="btn-primary hidden md:inline-flex"
-              style={{ fontSize: "13px", padding: "8px 18px", flexShrink: 0 }}
+              style={{ fontSize: "13px", padding: "8px 18px", flexShrink: 0, display: "inline-flex", alignItems: "center", gap: "6px" }}
             >
-              Get a free audit →
+              <span>Get a free audit</span>
+              <ArrowIcon size={13} />
             </Link>
 
             {/* Mobile Hamburger Button */}
@@ -525,9 +529,13 @@ export default function Header() {
                       color: "var(--accent)",
                       textDecoration: "none",
                       paddingTop: "6px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
                     }}
                   >
-                    View All Services Directory →
+                    <span>View All Services Directory</span>
+                    <ArrowIcon size={13} />
                   </Link>
                 </div>
               )}
@@ -603,9 +611,10 @@ export default function Header() {
               href="/contact"
               className="btn-primary"
               onClick={() => setMobileOpen(false)}
-              style={{ justifyContent: "center", padding: "14px" }}
+              style={{ justifyContent: "center", padding: "14px", display: "inline-flex", alignItems: "center", gap: "8px" }}
             >
-              Get a Free Audit →
+              <span>Get a Free Audit</span>
+              <ArrowIcon size={14} />
             </Link>
 
             <a

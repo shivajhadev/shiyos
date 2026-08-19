@@ -2,28 +2,28 @@
 
 const steps = [
   {
-    week: "WEEK 0",
-    title: "Strategy call",
+    week: "DAYS 0–2",
+    title: "Strategy & scope",
     description:
       "Free and without obligation. We look at your accounts and your numbers, and tell you honestly whether we're the right studio for the job.",
   },
   {
-    week: "WEEKS 1–2",
-    title: "Audit & plan",
+    week: "DAYS 2–4",
+    title: "Audit & roadmap",
     description:
-      "A written teardown of what's working, what's leaking, and the plan for the first quarter — with the metric each action is meant to move.",
+      "A written teardown of what's working, what's leaking, and the strategic sprint plan — with the exact metric each action is meant to move.",
   },
   {
-    week: "WEEKS 3–6",
+    week: "DAYS 5–7",
     title: "Build & launch",
     description:
       "First creative batch, campaigns live, tracking verified end to end so the reporting can be trusted from day one.",
   },
   {
     week: "ONGOING",
-    title: "Iterate & report",
+    title: "Iterate & scale",
     description:
-      "A monthly report in plain language: what ran, what it returned, and what changes next month.",
+      "Continuous optimization with plain-language reporting: what ran, what it returned, and what changes in the next sprint.",
   },
 ];
 
@@ -43,10 +43,9 @@ export default function ProcessTimeline() {
 
         <h2
           style={{
-            fontFamily: '"Syne", sans-serif',
             fontWeight: 800,
-            fontSize: "clamp(32px, 4vw, 52px)",
-            lineHeight: "1.1",
+            fontSize: "clamp(32px, 4vw, 50px)",
+            lineHeight: "1.12",
             letterSpacing: "-0.03em",
             color: "var(--text-primary)",
             marginBottom: "36px",
@@ -87,7 +86,6 @@ export default function ProcessTimeline() {
                   letterSpacing: "0.12em",
                   color: "var(--accent)",
                   marginBottom: "20px",
-                  fontFamily: '"Space Grotesk", sans-serif',
                 }}
               >
                 {step.week}
@@ -95,13 +93,12 @@ export default function ProcessTimeline() {
 
               <h3
                 style={{
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
-                  fontSize: "24px",
+                  fontSize: "22px",
                   color: "var(--text-primary)",
                   letterSpacing: "-0.02em",
                   marginBottom: "16px",
-                  lineHeight: "1.2",
+                  lineHeight: "1.25",
                 }}
               >
                 {step.title}
@@ -112,7 +109,6 @@ export default function ProcessTimeline() {
                   fontSize: "15px",
                   color: "var(--text-muted)",
                   lineHeight: "1.7",
-                  fontFamily: '"Space Grotesk", sans-serif',
                 }}
               >
                 {step.description}

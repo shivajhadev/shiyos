@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -124,10 +125,9 @@ export default function WorkPage() {
           </span>
           <h1
             style={{
-              fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
-              fontSize: "clamp(40px, 5.5vw, 68px)",
-              lineHeight: "1.05",
+              fontSize: "clamp(38px, 5.2vw, 64px)",
+              lineHeight: "1.1",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
               marginBottom: "24px",
@@ -143,7 +143,6 @@ export default function WorkPage() {
               color: "var(--text-muted)",
               maxWidth: "600px",
               lineHeight: "1.65",
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             Client names withheld by request. Sector, audience size, and scope of work are
@@ -158,22 +157,21 @@ export default function WorkPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-              gap: "24px",
+              gap: "20px",
             }}
           >
             {sectors.map((sector) => (
               <div
-                key={sector.code}
+                key={sector.num}
                 className="card"
                 style={{
-                  borderRadius: "20px",
+                  borderRadius: "16px",
                   overflow: "hidden",
+                  backgroundColor: "var(--bg-card)",
+                  border: "1px solid var(--border-card)",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  minHeight: "360px",
-                  backgroundColor: "var(--bg-card)",
-                  border: "1px solid var(--border-card)",
                 }}
               >
                 <div
@@ -186,7 +184,6 @@ export default function WorkPage() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
                     <span
                       style={{
-                        fontFamily: '"Syne", sans-serif',
                         fontWeight: 800,
                         fontSize: "28px",
                         color: "var(--accent)",
@@ -213,11 +210,11 @@ export default function WorkPage() {
 
                   <h3
                     style={{
-                      fontFamily: '"Syne", sans-serif',
                       fontWeight: 700,
                       fontSize: "22px",
                       color: "var(--text-primary)",
                       marginBottom: "8px",
+                      letterSpacing: "-0.02em",
                     }}
                   >
                     {sector.name}
@@ -230,7 +227,6 @@ export default function WorkPage() {
                       color: "var(--accent)",
                       fontWeight: 600,
                       marginBottom: "16px",
-                      fontFamily: '"Space Grotesk", sans-serif',
                     }}
                   >
                     {sector.tag}
@@ -241,7 +237,6 @@ export default function WorkPage() {
                       fontSize: "14px",
                       color: "var(--text-muted)",
                       lineHeight: "1.65",
-                      fontFamily: '"Space Grotesk", sans-serif',
                     }}
                   >
                     {sector.description}
@@ -296,7 +291,6 @@ export default function WorkPage() {
           >
             <h2
               style={{
-                fontFamily: '"Syne", sans-serif',
                 fontWeight: 800,
                 fontSize: "clamp(28px, 3.5vw, 44px)",
                 color: "var(--text-primary)",
@@ -313,13 +307,13 @@ export default function WorkPage() {
                 maxWidth: "520px",
                 margin: "0 auto 32px",
                 lineHeight: "1.65",
-                fontFamily: '"Space Grotesk", sans-serif',
               }}
             >
               Our automation, advertising, and development systems adapt to any growth-focused business model.
             </p>
-            <Link href="/contact" className="btn-primary">
-              Book a 30-min Audit Call →
+            <Link href="/contact" className="btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <span>Book a 30-min Audit Call</span>
+              <ArrowIcon size={14} />
             </Link>
           </div>
         </div>

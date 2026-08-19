@@ -25,9 +25,8 @@ export default function ContactPage() {
           </span>
           <h1
             style={{
-              fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
-              fontSize: "clamp(40px, 5.5vw, 68px)",
+              fontSize: "clamp(38px, 5.2vw, 64px)",
               lineHeight: "1.05",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
@@ -44,7 +43,6 @@ export default function ContactPage() {
               color: "var(--text-muted)",
               maxWidth: "560px",
               lineHeight: "1.65",
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             Fill out the form below. The founders review every submission and reply within 4 hours — no junior handoff, no fluff.
@@ -67,7 +65,6 @@ export default function ContactPage() {
             <div>
               <h2
                 style={{
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
                   fontSize: "26px",
                   color: "var(--text-primary)",
@@ -121,12 +118,12 @@ export default function ContactPage() {
                           href={href}
                           target={href.startsWith("http") ? "_blank" : undefined}
                           rel="noopener noreferrer"
-                          style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)", textDecoration: "none", fontFamily: '"Syne", sans-serif' }}
+                          style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)", textDecoration: "none" }}
                         >
                           {value}
                         </a>
                       ) : (
-                        <span style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)", fontFamily: '"Syne", sans-serif' }}>
+                        <span style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-primary)" }}>
                           {value}
                         </span>
                       )}

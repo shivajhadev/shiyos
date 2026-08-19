@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MessageCircle, Phone } from "lucide-react";
+import ArrowIcon from "@/components/ui/ArrowIcon";
 import type { TeamStoreData } from "@/lib/team-store";
 
 const defaultFallbackData: TeamStoreData = {
@@ -101,10 +102,9 @@ export default function TeamPage() {
           </div>
           <h1
             style={{
-              fontFamily: '"Syne", "Space Grotesk", sans-serif',
               fontWeight: 800,
               fontSize: "clamp(36px, 5vw, 64px)",
-              lineHeight: 1.05,
+              lineHeight: "1.05",
               letterSpacing: "-0.03em",
               color: "var(--text-primary)",
               marginBottom: "20px",
@@ -119,7 +119,6 @@ export default function TeamPage() {
               maxWidth: "540px",
               margin: "0 auto",
               lineHeight: 1.7,
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             {members.length + 1} specialists. One mission. Engineering growth for brands across
@@ -169,7 +168,6 @@ export default function TeamPage() {
                   borderRadius: "9999px",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
-                  fontFamily: '"Space Grotesk", sans-serif',
                   whiteSpace: "nowrap",
                 }}
               >
@@ -189,7 +187,6 @@ export default function TeamPage() {
                   margin: "0 auto 24px",
                   boxShadow: "0 0 0 6px rgba(245,185,46,0.15), 0 0 60px rgba(245,185,46,0.25)",
                   fontSize: "56px",
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
                   color: "#0a0a0a",
                   letterSpacing: "-0.02em",
@@ -227,7 +224,6 @@ export default function TeamPage() {
 
               <div
                 style={{
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
                   fontSize: "32px",
                   color: "var(--text-primary)",
@@ -240,7 +236,6 @@ export default function TeamPage() {
               <div
                 className="gradient-text"
                 style={{
-                  fontFamily: '"Space Grotesk", sans-serif',
                   fontWeight: 700,
                   fontSize: "13px",
                   letterSpacing: "0.08em",
@@ -255,7 +250,6 @@ export default function TeamPage() {
                   fontSize: "14px",
                   color: "var(--text-muted)",
                   lineHeight: 1.7,
-                  fontFamily: '"Space Grotesk", sans-serif',
                 }}
               >
                 {founder.tagline}
@@ -280,7 +274,6 @@ export default function TeamPage() {
                   <div key={lbl}>
                     <div
                       style={{
-                        fontFamily: '"Syne", sans-serif',
                         fontWeight: 800,
                         fontSize: "20px",
                         color: "var(--accent)",
@@ -293,7 +286,6 @@ export default function TeamPage() {
                       style={{
                         fontSize: "10px",
                         color: "var(--text-faint)",
-                        fontFamily: '"Space Grotesk", sans-serif',
                         fontWeight: 500,
                         textTransform: "uppercase",
                         letterSpacing: "0.06em",
@@ -320,10 +312,9 @@ export default function TeamPage() {
 
             <h2
               style={{
-                fontFamily: '"Syne", sans-serif',
                 fontWeight: 800,
                 fontSize: "clamp(28px, 3.5vw, 44px)",
-                lineHeight: 1.1,
+                lineHeight: "1.1",
                 letterSpacing: "-0.03em",
                 color: "var(--text-primary)",
                 marginBottom: "20px",
@@ -334,15 +325,15 @@ export default function TeamPage() {
               Technologies
             </h2>
 
-            <p style={{ fontSize: "16px", color: "var(--text-muted)", lineHeight: 1.8, fontFamily: '"Space Grotesk", sans-serif', marginBottom: "16px" }}>
+            <p style={{ fontSize: "16px", color: "var(--text-muted)", lineHeight: 1.8, marginBottom: "16px" }}>
               {founder.storyParagraph1}
             </p>
 
-            <p style={{ fontSize: "16px", color: "var(--text-muted)", lineHeight: 1.8, fontFamily: '"Space Grotesk", sans-serif', marginBottom: "16px" }}>
+            <p style={{ fontSize: "16px", color: "var(--text-muted)", lineHeight: 1.8, marginBottom: "16px" }}>
               {founder.storyParagraph2}
             </p>
 
-            <p style={{ fontSize: "16px", color: "var(--text-muted)", lineHeight: 1.8, fontFamily: '"Space Grotesk", sans-serif', marginBottom: "32px" }}>
+            <p style={{ fontSize: "16px", color: "var(--text-muted)", lineHeight: 1.8, marginBottom: "32px" }}>
               {founder.storyParagraph3}
             </p>
 
@@ -357,7 +348,6 @@ export default function TeamPage() {
                       borderRadius: "9999px",
                       background: "rgba(245,185,46,0.1)",
                       border: "1px solid rgba(245,185,46,0.25)",
-                      fontFamily: '"Syne", sans-serif',
                       fontWeight: 800,
                       fontSize: "12px",
                       color: "var(--accent)",
@@ -366,7 +356,7 @@ export default function TeamPage() {
                   >
                     {year}
                   </div>
-                  <p style={{ fontSize: "14px", color: "var(--text-muted)", lineHeight: 1.6, fontFamily: '"Space Grotesk", sans-serif', paddingTop: "3px", margin: 0 }}>
+                  <p style={{ fontSize: "14px", color: "var(--text-muted)", lineHeight: 1.6, paddingTop: "3px", margin: 0 }}>
                     {event}
                   </p>
                 </div>
@@ -384,7 +374,6 @@ export default function TeamPage() {
               gap: "16px",
               color: "var(--text-faint)",
               fontSize: "12px",
-              fontFamily: '"Space Grotesk", sans-serif',
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
@@ -427,7 +416,6 @@ export default function TeamPage() {
                   justifyContent: "center",
                   margin: "0 auto 16px",
                   fontSize: "22px",
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 800,
                   color: "rgba(255,255,255,0.9)",
                   letterSpacing: "-0.01em",
@@ -450,7 +438,6 @@ export default function TeamPage() {
 
               <div
                 style={{
-                  fontFamily: '"Syne", sans-serif',
                   fontWeight: 700,
                   fontSize: "16px",
                   color: "var(--text-primary)",
@@ -464,7 +451,6 @@ export default function TeamPage() {
                 style={{
                   fontSize: "12px",
                   color: "var(--accent)",
-                  fontFamily: '"Space Grotesk", sans-serif',
                   fontWeight: 600,
                   letterSpacing: "0.04em",
                 }}
@@ -477,7 +463,6 @@ export default function TeamPage() {
                   style={{
                     fontSize: "10px",
                     color: "var(--text-faint)",
-                    fontFamily: '"Space Grotesk", sans-serif',
                     marginTop: "6px",
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
@@ -503,7 +488,6 @@ export default function TeamPage() {
         >
           <h2
             style={{
-              fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
               fontSize: "clamp(24px, 3vw, 36px)",
               color: "var(--text-primary)",
@@ -520,7 +504,6 @@ export default function TeamPage() {
               maxWidth: "460px",
               margin: "0 auto 28px",
               lineHeight: 1.6,
-              fontFamily: '"Space Grotesk", sans-serif',
             }}
           >
             Every account gets a dedicated lead strategist, founder oversight, and direct WhatsApp communication.
@@ -530,9 +513,10 @@ export default function TeamPage() {
             <Link
               href="/contact"
               className="btn-primary"
-              style={{ display: "inline-flex" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
             >
-              Get in Touch →
+              <span>Get in Touch</span>
+              <ArrowIcon size={14} />
             </Link>
             <a
               href="https://wa.me/917986408226?text=Hi%2C%20I%27d%20like%20to%20join%20the%20Shiyos%20team"
@@ -550,7 +534,6 @@ export default function TeamPage() {
                 fontSize: "15px",
                 fontWeight: 600,
                 textDecoration: "none",
-                fontFamily: '"Space Grotesk", sans-serif',
               }}
             >
               <MessageCircle size={16} /> Join the Team
