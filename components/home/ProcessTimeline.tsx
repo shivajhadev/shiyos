@@ -84,7 +84,7 @@ export default function ProcessTimeline() {
                   fontWeight: 800,
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
-                  color: "var(--accent)",
+                  color: "var(--brand-text)",
                   marginBottom: "20px",
                 }}
               >

@@ -82,7 +82,7 @@ export default function WhyShiyos() {
                       width: "20px",
                       height: "20px",
                       borderRadius: "50%",
-                      background: "rgba(245, 185, 46, 0.15)",
+                      background: "rgba(37, 99, 235, 0.12)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -90,7 +90,7 @@ export default function WhyShiyos() {
                       marginTop: "2px",
                     }}
                   >
-                    <Check size={12} style={{ color: "var(--accent)" }} />
+                    <Check size={12} style={{ color: "#2563EB" }} />
                   </div>
                   <span style={{ fontSize: "14px", color: "var(--text-primary)", lineHeight: "1.6" }}>
                     {reason}
@@ -115,14 +115,14 @@ export default function WhyShiyos() {
                 padding: "40px",
                 border: "1px solid var(--border-card)",
                 borderRadius: "20px",
-                background: "linear-gradient(145deg, #151515, #0f0f0f)",
+                background: "var(--bg-card)",
               }}
             >
               <div
                 style={{
                   fontSize: "11px",
                   fontWeight: 700,
-                  color: "var(--accent)",
+                  color: "var(--brand-text)",
                   letterSpacing: "0.10em",
                   textTransform: "uppercase",
                   marginBottom: "20px",
@@ -165,16 +165,16 @@ export default function WhyShiyos() {
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, fontSize: "28px", color: "var(--accent)", letterSpacing: "-0.03em" }}>
+                  <div style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, fontSize: "28px", color: "var(--brand-text)", letterSpacing: "-0.03em" }}>
                     150+
                   </div>
                   <div style={{ fontSize: "12px", color: "var(--text-faint)", marginTop: "2px" }}>
-                    Brands Served
+                    Projects Delivered
                   </div>
                 </div>
                 <div>
                   <div style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, fontSize: "28px", color: "var(--text-primary)", letterSpacing: "-0.03em" }}>
-                    3+ <span className="gradient-text" style={{ fontSize: "20px", fontWeight: 700 }}>Years</span>
+                    2+ <span className="gradient-text" style={{ fontSize: "20px", fontWeight: 700 }}>Years</span>
                   </div>
                   <div style={{ fontSize: "12px", color: "var(--text-faint)", marginTop: "2px" }}>
                     Founder-Led Studio

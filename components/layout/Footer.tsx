@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { serviceCategories } from "@/lib/services-data";
 import { Sparkles, Phone, Mail, MessageCircle } from "lucide-react";
 import ArrowIcon from "@/components/ui/ArrowIcon";
+import BrandLogo from "@/components/ui/BrandLogo";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -50,42 +51,13 @@ export default function Footer() {
             <Link
               href="/"
               style={{
-                display: "flex",
+                display: "inline-flex",
                 alignItems: "center",
-                gap: "10px",
                 textDecoration: "none",
                 marginBottom: "20px",
               }}
             >
-              <div
-                style={{
-                  width: "32px",
-                  height: "32px",
-                  borderRadius: "8px",
-                  background: "var(--accent-gradient)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 800,
-                  fontSize: "17px",
-                  color: "#0a0a0a",
-                  boxShadow: "0 0 16px rgba(245, 185, 46, 0.3)",
-                }}
-              >
-                S
-              </div>
-              <span
-                style={{
-                  fontFamily: '"Plus Jakarta Sans", sans-serif',
-                  fontWeight: 800,
-                  fontSize: "20px",
-                  color: "var(--text-primary)",
-                  letterSpacing: "-0.03em",
-                  textTransform: "uppercase",
-                }}
-              >
-                SHIYOS
-              </span>
+              <BrandLogo size={34} />
             </Link>
 
             <p

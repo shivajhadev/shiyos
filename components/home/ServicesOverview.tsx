@@ -96,11 +96,11 @@ export default function ServicesOverview() {
                         width: "36px",
                         height: "36px",
                         borderRadius: "10px",
-                        background: "rgba(245, 185, 46, 0.1)",
+                        background: "rgba(37, 99, 235, 0.12)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: "var(--accent)",
+                        color: "#2563EB",
                         flexShrink: 0,
                       }}
                     >

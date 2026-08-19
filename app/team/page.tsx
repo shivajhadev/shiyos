@@ -12,7 +12,7 @@ const defaultFallbackData: TeamStoreData = {
     role: "Founder & CEO",
     tagline: "Visionary behind Shiyos. 3+ years building brands, automating growth, and engineering results.",
     initials: "S",
-    gradient: "linear-gradient(135deg, #F5B92E 0%, #e8a010 100%)",
+    gradient: "linear-gradient(135deg, #2563EB 0%, #06B6D4 100%)",
     image: "",
     experienceYears: "3+",
     brandsCount: "150+",

@@ -7,6 +7,7 @@ import { useTheme } from "@/lib/theme";
 import { serviceCategories } from "@/lib/services-data";
 import { Menu, X, Sun, Moon, ChevronDown, MessageCircle, Sparkles } from "lucide-react";
 import ArrowIcon from "@/components/ui/ArrowIcon";
+import BrandLogo from "@/components/ui/BrandLogo";
 
 export default function Header() {
   const pathname = usePathname();
@@ -84,38 +85,9 @@ export default function Header() {
           {/* Brand Logo */}
           <Link
             href="/"
-            style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none", flexShrink: 0 }}
+            style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0 }}
           >
-            <div
-              style={{
-                width: "32px",
-                height: "32px",
-                borderRadius: "8px",
-                background: "var(--accent-gradient)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: 800,
-                fontSize: "17px",
-                color: "#0a0a0a",
-                flexShrink: 0,
-                boxShadow: "0 0 16px rgba(245, 185, 46, 0.35)",
-              }}
-            >
-              S
-            </div>
-            <span
-              style={{
-                fontFamily: '"Plus Jakarta Sans", sans-serif',
-                fontWeight: 800,
-                fontSize: "20px",
-                color: "var(--text-primary)",
-                letterSpacing: "-0.03em",
-                textTransform: "uppercase",
-              }}
-            >
-              SHIYOS
-            </span>
+            <BrandLogo size={32} />
           </Link>
 
           {/* Desktop Navigation (> 1024px) */}
@@ -439,8 +411,8 @@ export default function Header() {
                 fontWeight: 700,
                 color: "var(--text-primary)",
                 textDecoration: "none",
-                background: pathname === "/" ? "rgba(245,185,46,0.1)" : "transparent",
-                border: pathname === "/" ? "1px solid rgba(245,185,46,0.3)" : "1px solid transparent",
+                background: pathname === "/" ? "rgba(37,99,235,0.08)" : "transparent",
+                border: pathname === "/" ? "1px solid rgba(37,99,235,0.25)" : "1px solid transparent",
               }}
             >
               Home
@@ -456,7 +428,7 @@ export default function Header() {
                 fontWeight: 700,
                 color: "var(--text-primary)",
                 textDecoration: "none",
-                background: pathname === "/about" ? "rgba(245,185,46,0.1)" : "transparent",
+                background: pathname === "/about" ? "rgba(37,99,235,0.08)" : "transparent",
               }}
             >
               About Studio

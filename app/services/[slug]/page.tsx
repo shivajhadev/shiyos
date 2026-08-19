@@ -72,13 +72,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               style={{
                 fontSize: "11px",
                 fontWeight: 700,
-                color: "var(--accent)",
+                color: "var(--brand-text)",
                 textTransform: "uppercase",
                 letterSpacing: "0.10em",
-                background: "rgba(245, 185, 46, 0.1)",
+                background: "rgba(37, 99, 235, 0.08)",
                 padding: "4px 12px",
                 borderRadius: "9999px",
-                border: "1px solid rgba(245, 185, 46, 0.25)",
+                border: "1px solid rgba(37, 99, 235, 0.25)",
               }}
             >
               {service.tagline}
@@ -156,7 +156,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                         width: "20px",
                         height: "20px",
                         borderRadius: "50%",
-                        background: "rgba(245, 185, 46, 0.15)",
+                        background: "rgba(37, 99, 235, 0.12)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -164,7 +164,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                         marginTop: "2px",
                       }}
                     >
-                      <Check size={12} style={{ color: "var(--accent)" }} />
+                      <Check size={12} style={{ color: "#2563EB" }} />
                     </div>
                     <span style={{ fontSize: "14px", color: "var(--text-primary)", lineHeight: "1.6" }}>
                       {detail}

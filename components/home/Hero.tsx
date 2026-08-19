@@ -32,7 +32,7 @@ export default function Hero() {
         backgroundColor: "var(--bg)",
       }}
     >
-      {/* Background ambient glow */}
+      {/* Background ambient glow (Blue → Cyan) */}
       <div
         aria-hidden="true"
         style={{
@@ -43,9 +43,9 @@ export default function Hero() {
           width: "700px",
           height: "400px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(245,185,46,0.08) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.12) 0%, rgba(6,182,212,0.05) 50%, transparent 70%)",
           pointerEvents: "none",
-          filter: "blur(40px)",
+          filter: "blur(50px)",
         }}
       />
 
@@ -63,7 +63,7 @@ export default function Hero() {
           {/* ── LEFT: Text & CTAs ── */}
           <div>
             <div className="section-label" style={{ marginBottom: "24px", display: "inline-flex" }}>
-              <span style={{ color: "var(--accent)", fontSize: "7px" }}>●</span>
+              <span style={{ color: "#2563eb", fontSize: "7px" }}>●</span>
               AI • SOFTWARE • AUTOMATION • GROWTH
             </div>
 
@@ -223,7 +223,7 @@ export default function Hero() {
                   position: "absolute",
                   inset: 0,
                   borderRadius: "50%",
-                  border: "1px dashed rgba(245, 185, 46, 0.3)",
+                  border: "1px dashed rgba(37, 99, 235, 0.35)",
                   animation: "spin-cw 32s linear infinite",
                 }}
               >
@@ -236,8 +236,8 @@ export default function Hero() {
                     width: "10px",
                     height: "10px",
                     borderRadius: "50%",
-                    background: "var(--accent)",
-                    boxShadow: "0 0 14px var(--accent)",
+                    background: "#06B6D4",
+                    boxShadow: "0 0 14px #06B6D4, 0 0 24px rgba(6, 182, 212, 0.6)",
                   }}
                 />
               </div>
@@ -257,37 +257,48 @@ export default function Hero() {
               <div
                 className="hero-core-badge"
                 style={{
-                  width: "120px",
-                  height: "120px",
-                  borderRadius: "28px",
-                  background: "var(--accent-gradient)",
+                  width: "130px",
+                  height: "130px",
+                  borderRadius: "32px",
+                  background: "linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(6, 182, 212, 0.15) 100%)",
+                  border: "1.5px solid rgba(37, 99, 235, 0.4)",
+                  backdropFilter: "blur(12px)",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  boxShadow: "0 0 60px rgba(245,185,46,0.45), 0 20px 40px rgba(0,0,0,0.4)",
+                  boxShadow: "0 0 70px rgba(37, 99, 235, 0.35), 0 20px 40px rgba(0,0,0,0.5)",
                   zIndex: 2,
                   animation: "float-core 5s ease-in-out infinite",
                 }}
               >
-                <span
-                  style={{
-                    fontWeight: 800,
-                    fontSize: "56px",
-                    color: "#0a0a0a",
-                    lineHeight: 1,
-                  }}
-                >
-                  S
-                </span>
+                <svg width="68" height="68" viewBox="0 0 100 100" fill="none">
+                  <defs>
+                    <linearGradient id="hero-core-s-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#2563EB" />
+                      <stop offset="50%" stopColor="#3B82F6" />
+                      <stop offset="100%" stopColor="#06B6D4" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M 68 25 C 50 18, 30 22, 26 38 C 22 52, 44 54, 58 60 C 72 66, 78 78, 68 88 C 58 98, 34 94, 24 82"
+                    stroke="url(#hero-core-s-grad)"
+                    strokeWidth="14"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <rect x="74" y="20" width="7" height="7" rx="2" fill="#06B6D4" />
+                  <rect x="83" y="14" width="6" height="6" rx="1.5" fill="#60A5FA" />
+                  <rect x="85" y="24" width="5" height="5" rx="1" fill="#3B82F6" />
+                </svg>
                 <span
                   style={{
                     fontSize: "10px",
                     fontWeight: 800,
-                    color: "#0a0a0a",
+                    color: "var(--text-primary)",
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
-                    marginTop: "4px",
+                    marginTop: "2px",
                   }}
                 >
                   SHIYOS
@@ -313,7 +324,7 @@ export default function Hero() {
                 <div style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, fontSize: "18px", color: "var(--text-primary)", letterSpacing: "-0.03em" }}>
                   150+ Projects
                 </div>
-                <div style={{ fontSize: "11px", color: "var(--accent)", fontWeight: 600 }}>E-comm &amp; D2C Scale</div>
+                <div style={{ fontSize: "11px", color: "#3b82f6", fontWeight: 600 }}>E-comm &amp; D2C Scale</div>
               </div>
 
               {/* Floating Stat Card 2 */}

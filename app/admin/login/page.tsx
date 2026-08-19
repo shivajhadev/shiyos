@@ -109,9 +109,9 @@ export default function AdminLoginPage() {
               fontFamily: '"Syne", sans-serif',
               fontWeight: 800,
               fontSize: "28px",
-              color: "#0a0a0a",
+              color: "#ffffff",
               margin: "0 auto 16px",
-              boxShadow: "0 0 30px rgba(245, 185, 46, 0.4)",
+              boxShadow: "0 0 30px rgba(37, 99, 235, 0.4)",
             }}
           >
             S

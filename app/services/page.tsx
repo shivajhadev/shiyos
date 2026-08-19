@@ -153,11 +153,11 @@ export default function ServicesPage() {
                     width: "40px",
                     height: "40px",
                     borderRadius: "10px",
-                    background: "rgba(245, 185, 46, 0.1)",
+                    background: "rgba(37, 99, 235, 0.12)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "var(--accent)",
+                    color: "#2563EB",
                     flexShrink: 0,
                   }}
                 >

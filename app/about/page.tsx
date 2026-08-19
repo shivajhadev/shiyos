@@ -177,7 +177,7 @@ export default function AboutPage() {
                           width: "18px",
                           height: "18px",
                           borderRadius: "50%",
-                          background: "rgba(245, 185, 46, 0.15)",
+                          background: "rgba(37, 99, 235, 0.12)",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
@@ -185,7 +185,7 @@ export default function AboutPage() {
                           marginTop: "3px",
                         }}
                       >
-                        <Check size={10} style={{ color: "var(--accent)" }} />
+                        <Check size={10} style={{ color: "#2563EB" }} />
                       </div>
                       <p style={{ fontSize: "14px", color: "var(--text-primary)", lineHeight: "1.6" }}>{v}</p>
                     </div>

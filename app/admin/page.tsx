@@ -33,7 +33,7 @@ import type { TeamMember, FounderData } from "@/lib/team-store";
 const STATUS_COLORS: Record<string, { bg: string; text: string; border: string }> = {
   New: { bg: "rgba(34, 197, 94, 0.12)", text: "#22c55e", border: "rgba(34, 197, 94, 0.3)" },
   Contacted: { bg: "rgba(59, 130, 246, 0.12)", text: "#3b82f6", border: "rgba(59, 130, 246, 0.3)" },
-  "In Progress": { bg: "rgba(245, 185, 46, 0.14)", text: "#f5b92e", border: "rgba(245, 185, 46, 0.35)" },
+  "In Progress": { bg: "rgba(6, 182, 212, 0.12)", text: "#06b6d4", border: "rgba(6, 182, 212, 0.3)" },
   Converted: { bg: "rgba(168, 85, 247, 0.12)", text: "#a855f7", border: "rgba(168, 85, 247, 0.3)" },
   Archived: { bg: "rgba(156, 163, 175, 0.12)", text: "#9ca3af", border: "rgba(156, 163, 175, 0.3)" },
 };

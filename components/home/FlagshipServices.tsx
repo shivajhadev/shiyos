@@ -146,12 +146,27 @@ export default function FlagshipServices() {
                         width: "44px",
                         height: "44px",
                         borderRadius: "12px",
-                        background: "rgba(245, 185, 46, 0.12)",
-                        border: "1px solid rgba(245, 185, 46, 0.25)",
+                        background:
+                          pillar.id === "build"
+                            ? "rgba(37, 99, 235, 0.12)"
+                            : pillar.id === "automate"
+                            ? "rgba(6, 182, 212, 0.12)"
+                            : "rgba(59, 130, 246, 0.12)",
+                        border:
+                          pillar.id === "build"
+                            ? "1px solid rgba(37, 99, 235, 0.25)"
+                            : pillar.id === "automate"
+                            ? "1px solid rgba(6, 182, 212, 0.25)"
+                            : "1px solid rgba(59, 130, 246, 0.25)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: "var(--accent)",
+                        color:
+                          pillar.id === "build"
+                            ? "#2563EB"
+                            : pillar.id === "automate"
+                            ? "#06B6D4"
+                            : "#3B82F6",
                       }}
                     >
                       <Icon size={22} />
@@ -174,7 +189,12 @@ export default function FlagshipServices() {
                     style={{
                       fontSize: "11px",
                       fontWeight: 700,
-                      color: "var(--accent)",
+                      color:
+                        pillar.id === "build"
+                          ? "#2563EB"
+                          : pillar.id === "automate"
+                          ? "#06B6D4"
+                          : "var(--brand-text)",
                       textTransform: "uppercase",
                       letterSpacing: "0.10em",
                       marginBottom: "6px",
@@ -224,7 +244,7 @@ export default function FlagshipServices() {
                           transition: "border-color 150ms ease, transform 150ms ease",
                         }}
                         onMouseEnter={(e) => {
-                          (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(245, 185, 46, 0.4)";
+                          (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(37, 99, 235, 0.4)";
                           (e.currentTarget as HTMLAnchorElement).style.transform = "translateX(2px)";
                         }}
                         onMouseLeave={(e) => {
@@ -275,7 +295,7 @@ export default function FlagshipServices() {
             padding: "24px 32px",
             borderRadius: "16px",
             border: "1px solid var(--border-card)",
-            background: "linear-gradient(135deg, rgba(245,185,46,0.06) 0%, var(--bg-card) 100%)",
+            background: "linear-gradient(135deg, rgba(37,99,235,0.06) 0%, var(--bg-card) 100%)",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -289,11 +309,11 @@ export default function FlagshipServices() {
                 width: "36px",
                 height: "36px",
                 borderRadius: "10px",
-                background: "rgba(245,185,46,0.15)",
+                background: "rgba(37,99,235,0.12)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "var(--accent)",
+                color: "#2563EB",
                 flexShrink: 0,
               }}
             >

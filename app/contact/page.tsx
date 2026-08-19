@@ -99,15 +99,15 @@ export default function ContactPage() {
                         width: "42px",
                         height: "42px",
                         borderRadius: "12px",
-                        background: "rgba(245, 185, 46, 0.1)",
+                        background: "rgba(37, 99, 235, 0.12)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        border: "1px solid rgba(245, 185, 46, 0.2)",
+                        border: "1px solid rgba(37, 99, 235, 0.25)",
                         flexShrink: 0,
                       }}
                     >
-                      <Icon size={18} style={{ color: "var(--accent)" }} />
+                      <Icon size={18} style={{ color: "#2563EB" }} />
                     </div>
                     <div>
                       <div style={{ fontSize: "11px", fontWeight: 700, color: "var(--text-faint)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px" }}>

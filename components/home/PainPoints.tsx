@@ -55,7 +55,7 @@ export default function PainPoints() {
           right: "5%",
           width: "60px",
           height: "60px",
-          border: "2px solid rgba(245, 185, 46, 0.4)",
+          border: "2px solid rgba(37, 99, 235, 0.3)",
           transform: "rotate(45deg)",
           pointerEvents: "none",
           opacity: 0.6,

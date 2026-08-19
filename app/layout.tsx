@@ -43,13 +43,8 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-snippet": -1 },
   },
   icons: {
-    icon: [
-      {
-        url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F5B92E'/><text x='50%25' y='54%25' font-family='Syne,sans-serif' font-weight='800' font-size='20' fill='%23111214' text-anchor='middle' dominant-baseline='middle'>S</text></svg>",
-        type: "image/svg+xml",
-      },
-    ],
-    shortcut: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F5B92E'/><text x='50%25' y='54%25' font-family='sans-serif' font-weight='900' font-size='20' fill='%23111214' text-anchor='middle' dominant-baseline='middle'>S</text></svg>",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
   },
 };
 
@@ -68,12 +63,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
           rel="stylesheet"
         />
-        {/* Inline SVG favicon — yellow S on amber background */}
-        <link
-          rel="icon"
-          type="image/svg+xml"
-          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23F5B92E'/><text x='16' y='22' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23111214' text-anchor='middle'>S</text></svg>"
-        />
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
       </head>
       <body className="antialiased">
         {/* Anti-FOUC theme script — must be first thing in body */}
